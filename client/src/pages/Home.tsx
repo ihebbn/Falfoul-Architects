@@ -6,6 +6,8 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { useRef } from "react";
 
+import aboutBg from "@assets/5ef71572da6e9dc716e27f5c_Our_Story_Graph_(1)_1771601338215.png";
+
 export default function Home() {
   const { data: projects, isLoading } = useProjects();
   const heroRef = useRef<HTMLDivElement>(null);
@@ -69,20 +71,30 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section className="py-24 md:py-32 bg-white px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <span className="text-primary font-bold tracking-widest uppercase text-sm mb-4 block">Notre Philosophie</span>
+      <section className="relative py-24 md:py-32 overflow-hidden">
+        <div 
+          className="absolute inset-0 z-0 bg-fixed bg-center bg-no-repeat bg-cover opacity-10"
+          style={{ backgroundImage: `url(${aboutBg})` }}
+        />
+        <div className="relative z-10 max-w-4xl mx-auto text-center px-6">
+          <span className="text-primary font-bold tracking-widest uppercase text-sm mb-4 block">Introduction</span>
           <h2 className="text-3xl md:text-5xl font-display font-medium text-foreground mb-8 leading-tight">
-            Une approche minimaliste pour <br/> des espaces maximisés.
+            Histoire de FALFOUL Architecture
           </h2>
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            Chez FALFOUL Architecture, nous croyons que chaque ligne doit avoir un sens. 
-            Notre démarche est ancrée dans la recherche de l'essentiel, l'harmonie des matériaux 
-            et la lumière naturelle. Nous concevons des lieux de vie qui transcendent les tendances 
-            pour s'inscrire dans la durée.
-          </p>
+          <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
+            <p>
+              Fondée sur une vision de pureté structurelle, FALFOUL Architecture est née de la volonté 
+              de redéfinir le paysage urbain à travers le prisme de la modernité et de la durabilité. 
+              Notre histoire est celle d'une quête incessante de l'harmonie entre l'homme et son environnement.
+            </p>
+            <p>
+              Depuis nos débuts, nous avons privilégié une approche minimaliste où chaque ligne, chaque 
+              matériau et chaque source de lumière naturelle est méticuleusement orchestré pour créer 
+              des espaces qui respirent et inspirent.
+            </p>
+          </div>
           <div className="mt-12">
-            <Link href="/contact">
+            <Link href="/contact" className="inline-block">
               <Button variant="outline" className="px-8 py-6 rounded-none border-foreground text-foreground hover:bg-foreground hover:text-white transition-all uppercase tracking-widest text-xs font-bold">
                 Démarrer un projet
               </Button>
