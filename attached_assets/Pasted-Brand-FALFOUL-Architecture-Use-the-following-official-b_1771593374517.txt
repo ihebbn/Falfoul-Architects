@@ -1,0 +1,309 @@
+Brand:
+
+FALFOUL Architecture
+
+Use the following official brand color palette extracted from the logo:
+
+🎨 Brand Colors
+
+Primary Dark (Charcoal Grey)
+
+#4A4A4A
+
+Accent Gold (Signature Highlight)
+
+#E5A90A
+
+Light Concrete Background
+
+#DCDCDC
+
+Secondary Text Grey
+
+#8A8A8A
+
+White
+
+#FFFFFF
+
+Color Usage Rules
+
+80% white / light backgrounds
+
+15% charcoal (#4A4A4A)
+
+5% gold accents (#E5A90A)
+
+Gold is used only for highlights, buttons, hover states, and subtle design lines.
+
+🛠 Tech Requirements
+
+Next.js (App Router) + TypeScript
+
+Tailwind CSS
+
+Framer Motion for scroll animations
+
+Fully responsive
+
+Optimized images (next/image)
+
+SEO ready
+
+Accessible (ARIA, contrast safe)
+
+🌊 Parallax Scroll Effects (Important)
+1️⃣ Home Hero Parallax
+
+Full-screen hero image
+
+Background image moves slower than scroll (40% speed)
+
+Overlay text remains stable
+
+Slight zoom-in effect on load (scale 1.05 → 1.0)
+
+Smooth fade-in animation
+
+Respect prefers-reduced-motion
+
+2️⃣ Project Detail Hero Parallax
+
+Subtle parallax (20–30% scroll speed)
+
+Large cinematic full-width images
+
+3️⃣ Optional Subtle Section Parallax
+
+Gold separator lines move slightly on scroll
+
+Background image strips in some sections
+
+All animations must feel elegant, slow, architectural — not flashy.
+
+🧱 Website Structure
+1️⃣ Navbar
+
+Minimal top navigation:
+
+Accueil
+
+Projets
+
+Evenements
+
+Contact
+
+Sticky on scroll.
+Gold underline on hover.
+
+2️⃣ Accueil (Home)
+Hero Section
+
+Full-screen parallax background
+
+Overlay text:
+
+"FALFOUL Architecture
+Agence spécialisée en architecture contemporaine et design."
+
+Short bilingual intro (FR / EN).
+
+About Section
+
+Minimal paragraph layout, large spacing, refined typography.
+
+Featured Projects
+
+Grid layout with hover reveal:
+
+Title
+
+Surface (m²)
+
+Category
+
+Hover effect:
+
+Image darkens slightly
+
+Gold accent line appears
+
+Contact Preview
+
+Short block with address and CTA button.
+
+3️⃣ Projets Page
+
+Filter Tabs:
+
+TOUS
+
+COMM/BUREAUTIQUES
+
+MULTIRESID.
+
+RESID.
+
+COMPETITIONS
+
+INTERIEURS/DESIGN
+
+VIDEOS
+
+Minimal animated filtering.
+
+Project cards:
+
+Large image
+
+Title
+
+Surface (m²)
+
+Subtle gold hover accent
+
+4️⃣ Project Detail Page
+
+Top:
+
+Large parallax hero image
+
+Category label in gold
+
+Big bold title in charcoal
+
+Expandable "+ D’infos" section:
+
+Architectes
+
+Maître d’ouvrage
+
+Emplacement
+
+Surface
+
+Année
+
+Statut
+
+Photos
+
+Distinctions
+
+Then:
+
+Description paragraphs
+
+Large clean gallery grid
+
+5️⃣ Evenements Page
+
+Vertical editorial timeline:
+
+Month + year
+
+Event type
+
+Short description
+
+External link button (gold outline)
+
+Clean white layout with thin separators.
+
+6️⃣ Contact Page
+
+Include:
+
+Address
+
+Email
+
+Phone
+
+Contact form (Name, Email, Subject, Message)
+
+Primary CTA button:
+
+Background: #E5A90A
+
+Text: white
+
+Hover: darker gold
+
+🎨 Design System Requirements
+
+Buttons:
+Primary:
+
+Background: #E5A90A
+
+Text: white
+
+Hover: darker gold
+
+Secondary:
+
+Border: #4A4A4A
+
+Text: #4A4A4A
+
+Hover: charcoal background + white text
+
+Typography:
+
+Modern sans serif (Inter or similar)
+
+Large headings
+
+Generous whitespace
+
+Light body text
+
+Dividers:
+
+Thin gold lines
+
+Subtle grey separators
+
+📂 Deliverables Required
+
+Generate:
+
+Full Next.js project structure
+
+Reusable ParallaxHero component
+
+ProjectCard component
+
+projects.ts sample data (15 projects)
+
+events.ts sample data (10 events)
+
+SEO metadata
+
+Clean production-ready code
+
+🎯 Visual Direction
+
+The website must feel:
+
+Architectural
+
+Premium
+
+Calm
+
+Editorial
+
+Sophisticated
+
+Minimal
+
+Elegant
+
+No heavy gradients.
+No colorful backgrounds.
+No loud UI effects.
+
+Think: luxury architectural studio presentation.
