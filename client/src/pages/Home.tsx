@@ -116,16 +116,37 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+          <div className="flex flex-col md:grid md:grid-cols-12 gap-8 md:gap-12 items-stretch">
             {isLoading ? (
               // Loading skeleton
               Array(3).fill(0).map((_, i) => (
-                <div key={i} className="aspect-[4/3] bg-muted animate-pulse" />
+                <div key={i} className="col-span-4 aspect-[4/3] bg-muted animate-pulse" />
               ))
             ) : (
-              projects?.slice(0, 3).map((project) => (
-                <ProjectCard key={project.id} project={project} />
-              ))
+              <>
+                {/* First project - Large, slightly offset */}
+                {projects?.[0] && (
+                  <div className="md:col-span-7 lg:col-span-8 md:pt-12">
+                    <ProjectCard project={projects[0]} />
+                  </div>
+                )}
+                
+                {/* Second project - Smaller, higher up */}
+                {projects?.[1] && (
+                  <div className="md:col-span-5 lg:col-span-4 md:self-start">
+                    <div className="md:aspect-[3/4]">
+                      <ProjectCard project={projects[1]} />
+                    </div>
+                  </div>
+                )}
+
+                {/* Third project - Medium, centered-ish or offset to the right */}
+                {projects?.[2] && (
+                  <div className="md:col-span-6 md:col-start-4 lg:col-span-5 lg:col-start-6 mt-8 md:-mt-12">
+                    <ProjectCard project={projects[2]} />
+                  </div>
+                )}
+              </>
             )}
           </div>
           
