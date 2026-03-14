@@ -1,12 +1,11 @@
 import { useProjects } from "@/hooks/use-projects";
+import { PROJECT_CATEGORIES } from "@/data/site-data";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Link } from "wouter";
 import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-
-const CATEGORIES = ["TOUS", "COMM/BUREAUTIQUES", "MULTIRESID.", "RESID.", "COMPETITIONS", "INTERIEURS/DESIGN"];
 type CardVariant = "standard" | "medium" | "tall";
 
 const CARD_VARIANT_CLASSES: Record<CardVariant, string> = {
@@ -249,7 +248,7 @@ export default function Home() {
           </div>
 
           <div className="flex flex-wrap justify-center gap-3 md:gap-4 mb-12 md:mb-14">
-            {CATEGORIES.map((cat) => (
+            {PROJECT_CATEGORIES.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}

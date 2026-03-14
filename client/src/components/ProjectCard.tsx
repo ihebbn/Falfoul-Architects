@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { Project } from "@shared/schema";
+import type { Project } from "@/data/site-data";
 import { motion } from "framer-motion";
 
 export function ProjectCard({ project, className }: { project: Project, className?: string }) {

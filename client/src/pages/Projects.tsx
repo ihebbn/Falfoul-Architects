@@ -1,10 +1,9 @@
 import { useProjects } from "@/hooks/use-projects";
+import { PROJECT_CATEGORIES } from "@/data/site-data";
 import { ProjectCard } from "@/components/ProjectCard";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
-
-const CATEGORIES = ["TOUS", "COMM/BUREAUTIQUES", "MULTIRESID.", "RESID.", "COMPETITIONS", "INTERIEURS/DESIGN"];
 
 export default function Projects() {
   const { data: projects, isLoading } = useProjects();
@@ -32,7 +31,7 @@ export default function Projects() {
 
         {/* Filter Tabs */}
         <div className="flex flex-wrap justify-center gap-3 md:gap-4 mb-16">
-          {CATEGORIES.map((cat) => (
+          {PROJECT_CATEGORIES.map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}

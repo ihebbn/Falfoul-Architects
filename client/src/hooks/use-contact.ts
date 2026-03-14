@@ -1,26 +1,56 @@
-import { useMutation } from "@tanstack/react-query";
-import { api } from "@shared/routes";
-import { type ContactInput } from "@shared/routes";
+import { useState } from "react";
+import {
+  contactFormSchema,
+  type ContactFormValues,
+} from "@/lib/contact-form";
 
 export function useContactMutation() {
-  return useMutation({
-    mutationFn: async (data: ContactInput) => {
-      const validated = api.contact.submit.input.parse(data);
-      const res = await fetch(api.contact.submit.path, {
-        method: api.contact.submit.method,
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(validated),
-        credentials: "include",
-      });
-      
-      if (!res.ok) {
-        if (res.status === 400) {
-          const error = api.contact.submit.responses[400].parse(await res.json());
-          throw new Error(error.message);
-        }
-        throw new Error("Failed to submit message");
+  const [isPending, setIsPending] = useState(false);
+
+  return {
+    isPending,
+    mutate: async (
+      data: ContactFormValues,
+      options?: {
+        onSuccess?: () => void;
+        onError?: (error: Error) => void;
       }
-      return api.contact.submit.responses[201].parse(await res.json());
+    ) => {
+      try {
+        setIsPending(true);
+        const validated = contactFormSchema.parse(data);
+
+        if (import.meta.env.DEV) {
+          await new Promise((resolve) => window.setTimeout(resolve, 300));
+          options?.onSuccess?.();
+          return;
+        }
+
+        const body = new URLSearchParams({
+          "form-name": "contact",
+          ...validated,
+        }).toString();
+
+        const res = await fetch("/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body,
+        });
+
+        if (!res.ok) {
+          throw new Error("Impossible d'envoyer le message pour le moment.");
+        }
+
+        options?.onSuccess?.();
+      } catch (error) {
+        options?.onError?.(
+          error instanceof Error ? error : new Error("Une erreur est survenue.")
+        );
+      } finally {
+        setIsPending(false);
+      }
     },
-  });
+  };
 }
