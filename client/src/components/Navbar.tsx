@@ -8,6 +8,9 @@ export function Navbar() {
   const [location] = useLocation();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const forceSolidNavbar =
+    location === "/projects" || location === "/events" || location === "/contact";
+  const isSolidNavbar = forceSolidNavbar || scrolled;
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -25,29 +28,31 @@ export function Navbar() {
   return (
     <nav
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out px-6 py-4 md:py-6",
-        scrolled ? "bg-white/90 backdrop-blur-md shadow-sm border-b border-border/40 py-3 md:py-4" : "bg-transparent"
+        "fixed top-0 left-0 right-0 z-50 h-[64px] md:h-[70px] px-6 transition-all duration-300 ease-out",
+        isSolidNavbar ? "bg-white/90 backdrop-blur-md shadow-sm border-b border-border/40" : "bg-transparent"
       )}
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <Link href="/">
-          <span className={cn(
-            "text-xl md:text-2xl font-bold font-display tracking-tight cursor-pointer transition-colors duration-300",
-            scrolled ? "text-foreground" : "text-foreground md:text-white mix-blend-difference"
-          )}>
-            FALFOUL <span className="text-primary font-normal">Architecture</span>
-          </span>
+      <div className="max-w-7xl mx-auto h-full flex items-center justify-between">
+        <Link href="/" className="shrink-0">
+          <img
+            src="/images/falfoul_logo-removebg-copie-1-1.png"
+            alt="Falfoul Architecture"
+            className={cn(
+              "h-10 md:h-10 w-auto cursor-pointer transition-opacity duration-300",
+              isSolidNavbar ? "opacity-100" : "opacity-100 md:invert md:brightness-0 md:mix-blend-difference"
+            )}
+          />
         </Link>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center space-x-8">
+        <div className="hidden md:flex items-center space-x-10">
           {links.map((link) => (
             <Link key={link.href} href={link.href}>
               <span className={cn(
-                "relative text-sm font-medium tracking-wide uppercase cursor-pointer group py-2 transition-colors",
+                "relative font-['Montserrat'] text-[13px] font-medium tracking-[1.5px] uppercase cursor-pointer group py-1 transition-colors",
                 location === link.href 
                   ? "text-primary" 
-                  : scrolled ? "text-foreground hover:text-primary" : "text-white mix-blend-difference hover:text-primary"
+                  : isSolidNavbar ? "text-foreground hover:text-primary" : "text-white mix-blend-difference hover:text-primary"
               )}>
                 {link.label}
                 <span className={cn(
@@ -61,7 +66,7 @@ export function Navbar() {
 
         {/* Mobile Toggle */}
         <button 
-          className="md:hidden text-foreground p-2"
+          className="md:hidden text-foreground p-1.5"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           {mobileMenuOpen ? <X /> : <Menu />}
@@ -81,7 +86,7 @@ export function Navbar() {
               <Link key={link.href} href={link.href}>
                 <span 
                   className={cn(
-                    "block text-lg font-display cursor-pointer",
+                    "block font-['Montserrat'] text-[13px] font-medium tracking-[1.5px] uppercase cursor-pointer",
                     location === link.href ? "text-primary" : "text-foreground"
                   )}
                   onClick={() => setMobileMenuOpen(false)}

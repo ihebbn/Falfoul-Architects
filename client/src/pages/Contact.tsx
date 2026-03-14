@@ -44,7 +44,7 @@ export default function Contact() {
   };
 
   return (
-    <div className="min-h-screen bg-background pt-32 pb-24 px-6">
+    <div className="min-h-screen bg-background pt-32 pb-24 px-6 font-['Montserrat']">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
           
@@ -54,8 +54,8 @@ export default function Contact() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-5xl md:text-6xl font-display font-bold mb-8 text-foreground">Contact</h1>
-            <p className="text-xl text-muted-foreground mb-12 font-light">
+            <h1 className="mb-8 max-w-[900px] text-[clamp(1.9rem,3.8vw,2.625rem)] font-medium tracking-[0.02em] text-[#3a3a3a] leading-[1.1]">Contact</h1>
+            <p className="mb-12 max-w-[680px] text-[16px] text-foreground/85 leading-[1.75]">
               Vous avez un projet ? Une question ? <br/>
               N'hésitez pas à nous écrire ou à venir nous rencontrer à l'agence.
             </p>
@@ -66,8 +66,8 @@ export default function Contact() {
                   <MapPin className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="font-display font-bold text-lg mb-1">Notre Agence</h3>
-                  <p className="text-muted-foreground">123 Avenue de l'Architecture<br/>75000 Paris, France</p>
+                  <h3 className="mb-2 text-[12px] md:text-[13px] font-medium uppercase tracking-[0.11em] text-foreground">Notre Agence</h3>
+                  <p className="text-[16px] text-foreground/85 leading-[1.75]">123 Avenue Habib Bourguiba<br/>1000 Tunis, Tunisie</p>
                 </div>
               </div>
 
@@ -76,8 +76,8 @@ export default function Contact() {
                   <Mail className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="font-display font-bold text-lg mb-1">Email</h3>
-                  <a href="mailto:contact@falfoul-archi.com" className="text-muted-foreground hover:text-primary transition-colors">
+                  <h3 className="mb-2 text-[12px] md:text-[13px] font-medium uppercase tracking-[0.11em] text-foreground">Email</h3>
+                  <a href="mailto:contact@falfoul-archi.com" className="text-[16px] text-foreground/85 hover:text-primary transition-colors">
                     contact@falfoul-archi.com
                   </a>
                 </div>
@@ -88,8 +88,8 @@ export default function Contact() {
                   <Phone className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="font-display font-bold text-lg mb-1">Téléphone</h3>
-                  <p className="text-muted-foreground">+33 1 23 45 67 89</p>
+                  <h3 className="mb-2 text-[12px] md:text-[13px] font-medium uppercase tracking-[0.11em] text-foreground">Téléphone</h3>
+                  <p className="text-[16px] text-foreground/85 leading-[1.75]">+216 71 123 456</p>
                 </div>
               </div>
             </div>
@@ -114,11 +114,11 @@ export default function Contact() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="bg-white p-8 md:p-12 shadow-lg shadow-black/5 border border-border"
           >
-            <h2 className="text-2xl font-display font-bold mb-8">Envoyez-nous un message</h2>
+            <h2 className="mb-8 text-[clamp(1.35rem,2.2vw,1.8rem)] font-medium tracking-[0.02em] text-[#3a3a3a] leading-[1.15]">Envoyez-nous un message</h2>
             
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Nom complet</label>
+                <label className="text-[12px] md:text-[13px] font-medium uppercase tracking-[0.11em] text-muted-foreground">Nom complet</label>
                 <Input 
                   {...form.register("name")}
                   className="bg-background border-border focus:border-primary rounded-none h-12"
@@ -128,7 +128,7 @@ export default function Contact() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Email</label>
+                <label className="text-[12px] md:text-[13px] font-medium uppercase tracking-[0.11em] text-muted-foreground">Email</label>
                 <Input 
                   {...form.register("email")}
                   className="bg-background border-border focus:border-primary rounded-none h-12"
@@ -138,7 +138,7 @@ export default function Contact() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Sujet</label>
+                <label className="text-[12px] md:text-[13px] font-medium uppercase tracking-[0.11em] text-muted-foreground">Sujet</label>
                 <Input 
                   {...form.register("subject")}
                   className="bg-background border-border focus:border-primary rounded-none h-12"
@@ -148,7 +148,7 @@ export default function Contact() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Message</label>
+                <label className="text-[12px] md:text-[13px] font-medium uppercase tracking-[0.11em] text-muted-foreground">Message</label>
                 <Textarea 
                   {...form.register("message")}
                   className="bg-background border-border focus:border-primary rounded-none min-h-[150px] resize-none"

@@ -23,24 +23,24 @@ export default function Projects() {
           transition={{ duration: 0.6 }}
           className="mb-16 text-center"
         >
-          <h1 className="text-5xl md:text-6xl font-display font-bold mb-6 text-foreground">Nos Projets</h1>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <h1 className="mx-auto mb-6 max-w-[900px] font-['Montserrat'] text-[clamp(1.9rem,3.8vw,2.625rem)] font-medium tracking-[0.02em] text-[#3a3a3a] leading-[1.1]">Nos Projets</h1>
+          <p className="mx-auto max-w-[680px] font-['Montserrat'] text-[16px] text-foreground/85 leading-[1.75]">
             Une collection de nos réalisations les plus marquantes, témoignant de notre engagement 
             envers l'excellence architecturale et l'innovation durable.
           </p>
         </motion.div>
 
         {/* Filter Tabs */}
-        <div className="flex flex-wrap justify-center gap-4 mb-16">
+        <div className="flex flex-wrap justify-center gap-3 md:gap-4 mb-16">
           {CATEGORIES.map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
               className={cn(
-                "px-4 py-2 text-xs md:text-sm font-bold uppercase tracking-widest transition-all duration-300 border border-transparent rounded-none",
+                "text-[12px] md:text-[13px] font-medium uppercase tracking-[0.11em] transition-all duration-300 border border-transparent rounded-none",
                 activeCategory === cat 
-                  ? "border-primary text-primary bg-primary/5" 
-                  : "text-muted-foreground hover:text-foreground hover:border-foreground/20"
+                  ? "px-2.5 py-1.5 border-primary text-primary bg-primary/5" 
+                  : "px-3.5 py-1.5 text-muted-foreground hover:text-foreground hover:border-foreground/20"
               )}
             >
               {cat}
