@@ -127,12 +127,12 @@ export default function Home() {
       <section ref={heroRef} className="relative h-screen w-full overflow-hidden flex items-center justify-center">
         <motion.div
           style={{ y }}
-          className="absolute inset-0 z-0"
+          className="absolute inset-0 z-0 overflow-hidden bg-black"
         >
           <iframe
-            src="https://www.youtube.com/embed/OP_fVIUTr9Y?autoplay=1&mute=1&loop=1&playlist=OP_fVIUTr9Y&controls=0&modestbranding=1&rel=0&playsinline=1&iv_load_policy=3&disablekb=1"
+            src="https://www.youtube.com/embed/aHupmE2bn20?autoplay=1&mute=1&loop=1&playlist=aHupmE2bn20&controls=0&modestbranding=1&rel=0&playsinline=1&iv_load_policy=3&disablekb=1"
             title="Falfoul Architecture Hero Background"
-            className="absolute top-1/2 left-1/2 h-[56.25vw] w-[177.78vh] min-h-full min-w-full -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+            className="absolute top-1/2 left-1/2 h-[56.25vw] w-[177.78vh] min-h-full min-w-full max-w-none -translate-x-1/2 -translate-y-1/2 scale-[1.16] md:scale-[1.12] pointer-events-none"
             allow="autoplay; encrypted-media; picture-in-picture"
             referrerPolicy="strict-origin-when-cross-origin"
           />
