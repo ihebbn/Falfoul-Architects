@@ -1,4 +1,4 @@
-export type Project = {
+﻿export type Project = {
   id: number;
   title: string;
   titleEn: string | null;
@@ -42,28 +42,39 @@ export const PROJECT_CATEGORIES = [
 export const PROJECTS: Project[] = [
   {
     id: 1,
-    title: "Villa Gammarth",
-    titleEn: "Gammarth Villa",
+    title: "Casa Marbella",
+    titleEn: "Chatt Meriem, Sousse",
     category: "RESID.",
-    surface: "450 m2",
-    year: 2023,
-    status: "Completed",
-    location: "Gammarth, Tunisia",
+    surface: "Surface terrain: 750m2\nSurface couverte: 800m2",
+    year: 2022,
+    status: "realisee",
+    location: "Chatt Meriem, Sousse",
     client: "Private",
     architects: "FALFOUL Architecture",
     description:
-      "A contemporary residence overlooking the Mediterranean, designed around long sightlines, soft natural light, and generous indoor-outdoor transitions.",
-    descriptionEn:
-      "A contemporary residence overlooking the Mediterranean, designed around long sightlines, soft natural light, and generous indoor-outdoor transitions.",
-    coverImage:
-      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=2000",
+      "Ce projet illustre parfaitement notre approche moderne et minimaliste de l'architecture. Le projet part d'un bloc simple, delicatement creuse pour capter la lumiere naturelle et ouvrir la maison sur le paysage. De grandes baies vitrees et une pergola en marbre creent un lien direct et fluide entre le salon et l'espace piscine. L'amenagement interieur est pratique et clair, separant naturellement les pieces de vie au rez-de-chaussee et les chambres a l'etage.",
+    descriptionEn: null,
+    coverImage: "/images/casa-marbella/1.jpg",
     images: [
-      "https://images.unsplash.com/photo-1600607687931-cebf0046cb20?auto=format&fit=crop&q=80&w=1200",
-      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&q=80&w=1200",
+      "/images/casa-marbella/1.jpg",
+      "/images/casa-marbella/2.jpg",
+      "/images/casa-marbella/3.jpg",
+      "/images/casa-marbella/4.jpg",
+      "/images/casa-marbella/5.jpg",
+      "/images/casa-marbella/6.jpg",
+      "/images/casa-marbella/axono.png",
+      "/images/casa-marbella/Gemini_Generated_Image_tndznftndznftndz.png",
+      "/images/casa-marbella/photo 1.png",
+      "/images/casa-marbella/photo 2.png",
+      "/images/casa-marbella/photo 3.png",
+      "/images/casa-marbella/photo 4.png",
+      "/images/casa-marbella/photo 6.png",
+      "/images/casa-marbella/photo 7.png",
+      "/images/casa-marbella/photo 8.png",
     ],
-    distinctions: ["Best Residential Design Tunisia 2023"],
+    distinctions: [],
     isFeatured: true,
-    createdAt: new Date("2023-09-14T00:00:00Z"),
+    createdAt: new Date("2022-01-01T00:00:00Z"),
   },
   {
     id: 2,
@@ -362,3 +373,8 @@ export const EVENTS: Event[] = [
 export function getProjectById(id: number) {
   return PROJECTS.find((project) => project.id === id) ?? null;
 }
+
+
+
+
+
