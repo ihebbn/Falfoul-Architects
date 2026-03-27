@@ -1,4 +1,4 @@
-﻿import { useProject } from "@/hooks/use-projects";
+import { useProject } from "@/hooks/use-projects";
 import { useRoute } from "wouter";
 import { motion } from "framer-motion";
 import { 
@@ -51,7 +51,7 @@ export default function ProjectDetail() {
             animate={{ opacity: 1, y: 0 }}
             className="text-primary font-bold tracking-widest uppercase text-sm mb-2 block"
           >
-            {project.category} â€” {project.year}
+            {project.category} - {project.year}
           </motion.span>
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
@@ -107,24 +107,37 @@ export default function ProjectDetail() {
         <div className="lg:col-span-1">
           <div className="sticky top-32 space-y-8">
             <div className="bg-muted/30 p-8 border border-border">
-              <h3 className="font-display text-xl font-bold mb-6">DÃ©tails du Projet</h3>
+              <h3 className="font-display text-xl font-bold mb-6">Détails du Projet</h3>
               
               <div className="space-y-4 text-sm">
                 <div>
                   <span className="block text-muted-foreground uppercase text-xs tracking-widest mb-1">Client</span>
-                  <span className="font-medium text-foreground">{project.client || "PrivÃ©"}</span>
+                  <span className="font-medium text-foreground">{project.client || "Privé"}</span>
                 </div>
-                <div>
-                  <span className="block text-muted-foreground uppercase text-xs tracking-widest mb-1">Surface</span>
-                  <span className="font-medium text-foreground whitespace-pre-line">{project.surface}</span>
-                </div>
+                {project.landSurface ? (
+                  <>
+                    <div>
+                      <span className="block text-muted-foreground uppercase text-xs tracking-widest mb-1">Surface terrain</span>
+                      <span className="font-medium text-foreground">{project.landSurface}</span>
+                    </div>
+                    <div>
+                      <span className="block text-muted-foreground uppercase text-xs tracking-widest mb-1">Surface couverte</span>
+                      <span className="font-medium text-foreground">{project.coveredSurface}</span>
+                    </div>
+                  </>
+                ) : (
+                  <div>
+                    <span className="block text-muted-foreground uppercase text-xs tracking-widest mb-1">Surface</span>
+                    <span className="font-medium text-foreground whitespace-pre-line">{project.surface}</span>
+                  </div>
+                )}
                 <div>
                   <span className="block text-muted-foreground uppercase text-xs tracking-widest mb-1">Architectes</span>
                   <span className="font-medium text-foreground">{project.architects || "Falfoul Architecture"}</span>
                 </div>
                 <div>
                   <span className="block text-muted-foreground uppercase text-xs tracking-widest mb-1">Statut</span>
-                  <span className="font-medium text-foreground">{project.status || "LivrÃ©"}</span>
+                  <span className="font-medium text-foreground">{project.status || "Livré"}</span>
                 </div>
               </div>
 
@@ -134,7 +147,7 @@ export default function ProjectDetail() {
                   <ul className="space-y-2">
                     {project.distinctions.map((d, i) => (
                       <li key={i} className="flex items-start text-sm text-muted-foreground">
-                        <span className="text-primary mr-2">â€¢</span> {d}
+                        <span className="text-primary mr-2">•</span> {d}
                       </li>
                     ))}
                   </ul>
@@ -144,9 +157,9 @@ export default function ProjectDetail() {
 
             <Accordion type="single" collapsible className="w-full">
               <AccordionItem value="item-1">
-                <AccordionTrigger className="font-display">SpÃ©cifications Techniques</AccordionTrigger>
+                <AccordionTrigger className="font-display">Spécifications Techniques</AccordionTrigger>
                 <AccordionContent className="text-muted-foreground">
-                  Informations complÃ©mentaires sur les matÃ©riaux, la structure et les aspects techniques spÃ©cifiques Ã  ce projet.
+                  Informations complémentaires sur les matériaux, la structure et les aspects techniques spécifiques à ce projet.
                 </AccordionContent>
               </AccordionItem>
             </Accordion>

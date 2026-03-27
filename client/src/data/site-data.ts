@@ -1,9 +1,11 @@
-﻿export type Project = {
+export type Project = {
   id: number;
   title: string;
   titleEn: string | null;
   category: string;
   surface: string;
+  landSurface?: string | null;
+  coveredSurface?: string | null;
   year: number | null;
   status: string | null;
   location: string | null;
@@ -45,19 +47,21 @@ export const PROJECTS: Project[] = [
     title: "Casa Marbella",
     titleEn: "Chatt Meriem, Sousse",
     category: "RESID.",
-    surface: "Surface terrain: 750m2\nSurface couverte: 800m2",
+    surface: "750 m²",
+    landSurface: "750 m²",
+    coveredSurface: "800 m²",
     year: 2022,
-    status: "realisee",
+    status: "réalisée",
     location: "Chatt Meriem, Sousse",
     client: "Private",
     architects: "FALFOUL Architecture",
     description:
-      "Ce projet illustre parfaitement notre approche moderne et minimaliste de l'architecture. Le projet part d'un bloc simple, delicatement creuse pour capter la lumiere naturelle et ouvrir la maison sur le paysage. De grandes baies vitrees et une pergola en marbre creent un lien direct et fluide entre le salon et l'espace piscine. L'amenagement interieur est pratique et clair, separant naturellement les pieces de vie au rez-de-chaussee et les chambres a l'etage.",
+      "Ce projet illustre parfaitement notre approche moderne et minimaliste de l'architecture. Le projet part d'un bloc simple, délicatement creusé pour capter la lumière naturelle et ouvrir la maison sur le paysage. De grandes baies vitrées et une pergola en marbre créent un lien direct et fluide entre le salon et l'espace piscine. L'aménagement intérieur est pratique et clair, séparant naturellement les pièces de vie au rez-de-chaussée et les chambres à l'étage.",
     descriptionEn: null,
-    coverImage: "/images/casa-marbella/1.jpg",
+    coverImage: "/images/casa-marbella/1(1).jpg",
     images: [
-      "/images/casa-marbella/1.jpg",
-      "/images/casa-marbella/2.jpg",
+      "/images/casa-marbella/1(1).jpg",
+      "/images/casa-marbella/2(1).jpg",
       "/images/casa-marbella/3.jpg",
       "/images/casa-marbella/4.jpg",
       "/images/casa-marbella/5.jpg",
