@@ -157,18 +157,18 @@ export const PROJECTS: Project[] = [
     description:
       "Ce complexe urbain mixte propose une alliance \u00E9l\u00E9gante entre densit\u00E9 contemporaine et intelligence bioclimatique. \u00C0 travers un jeu rythm\u00E9 de fa\u00E7ades \u2014 brise-soleil modulables, moucharabiehs revisit\u00E9s et murs v\u00E9g\u00E9talis\u00E9s \u2014 les vastes patios int\u00E9rieurs s'\u00E9rigent en v\u00E9ritables oasis de fra\u00EEcheur. Baign\u00E9e de lumi\u00E8re naturelle, l'int\u00E9gration ing\u00E9nieuse des flux d'air et de la nature cr\u00E9e une atmosph\u00E8re sereine, transformant ce grand ensemble en un lieu de vie d'exception, \u00E0 la fois connect\u00E9 \u00E0 la ville et intimement prot\u00E9g\u00E9.",
     descriptionEn: null,
-    coverImage: "/images/Concours Rabat/perspective generale.jpg",
+    coverImage: "/images/Concours Rabat/perspective generale.webp",
     images: [
-      "/images/Concours Rabat/perspective generale.jpg",
-      "/images/Concours Rabat/perspective aerienne.jpg",
-      "/images/Concours Rabat/pers1.jpg",
-      "/images/Concours Rabat/pers2.jpg",
-      "/images/Concours Rabat/pers3.jpg",
-      "/images/Concours Rabat/pers4.jpg",
-      "/images/Concours Rabat/pers5.jpg",
-      "/images/Concours Rabat/concept.jpg",
-      "/images/Concours Rabat/details technique.jpg",
-      "/images/Concours Rabat/plan masse.jpg",
+      "/images/Concours Rabat/perspective generale.webp",
+      "/images/Concours Rabat/perspective aerienne.webp",
+      "/images/Concours Rabat/pers1.webp",
+      "/images/Concours Rabat/pers2.webp",
+      "/images/Concours Rabat/pers3.webp",
+      "/images/Concours Rabat/pers4.webp",
+      "/images/Concours Rabat/pers5.webp",
+      "/images/Concours Rabat/concept.webp",
+      "/images/Concours Rabat/details technique.webp",
+      "/images/Concours Rabat/plan masse.webp",
     ],
     distinctions: [],
     isFeatured: true,
@@ -451,6 +451,7 @@ export const EVENTS: Event[] = [
 export function getProjectById(id: number) {
   return PROJECTS.find((project) => project.id === id) ?? null;
 }
+
 
 
 
