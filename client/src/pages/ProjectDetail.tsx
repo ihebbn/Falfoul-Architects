@@ -114,16 +114,20 @@ export default function ProjectDetail() {
                   <span className="block text-muted-foreground uppercase text-xs tracking-widest mb-1">Client</span>
                   <span className="font-medium text-foreground">{project.client || "Privé"}</span>
                 </div>
-                {project.landSurface ? (
+                {project.landSurface || project.coveredSurface ? (
                   <>
-                    <div>
-                      <span className="block text-muted-foreground uppercase text-xs tracking-widest mb-1">Surface terrain</span>
-                      <span className="font-medium text-foreground">{project.landSurface}</span>
-                    </div>
-                    <div>
-                      <span className="block text-muted-foreground uppercase text-xs tracking-widest mb-1">Surface couverte</span>
-                      <span className="font-medium text-foreground">{project.coveredSurface}</span>
-                    </div>
+                    {project.landSurface ? (
+                      <div>
+                        <span className="block text-muted-foreground uppercase text-xs tracking-widest mb-1">Surface terrain</span>
+                        <span className="font-medium text-foreground">{project.landSurface}</span>
+                      </div>
+                    ) : null}
+                    {project.coveredSurface ? (
+                      <div>
+                        <span className="block text-muted-foreground uppercase text-xs tracking-widest mb-1">Surface couverte</span>
+                        <span className="font-medium text-foreground">{project.coveredSurface}</span>
+                      </div>
+                    ) : null}
                   </>
                 ) : (
                   <div>

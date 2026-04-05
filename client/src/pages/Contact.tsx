@@ -15,6 +15,10 @@ import {
 export default function Contact() {
   const { toast } = useToast();
   const mutation = useContactMutation();
+  const officeAddress = "M36R+RGW, Kairouan";
+  const mapQuery = encodeURIComponent(`${officeAddress}, Tunisia`);
+  const mapHref = `https://www.google.com/maps/search/?api=1&query=${mapQuery}`;
+  const mapEmbedSrc = `https://www.google.com/maps?q=${mapQuery}&z=17&output=embed`;
 
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
@@ -73,9 +77,9 @@ export default function Contact() {
                     Notre Agence
                   </h3>
                   <p className="text-[16px] text-foreground/85 leading-[1.75]">
-                    123 Avenue Habib Bourguiba
+                    {officeAddress}
                     <br />
-                    1000 Tunis, Tunisie
+                    Kairouan, Tunisie
                   </p>
                 </div>
               </div>
@@ -112,24 +116,38 @@ export default function Contact() {
               </div>
             </div>
 
-            <div className="mt-12 w-full h-64 bg-muted grayscale hover:grayscale-0 transition-all duration-500 overflow-hidden relative">
-              <img
-                src="https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=1000&auto=format&fit=crop"
-                alt="Map"
-                className="w-full h-full object-cover opacity-60"
+            <a
+              href={mapHref}
+              target="_blank"
+              rel="noreferrer"
+              className="group relative mt-12 block h-[350px] overflow-hidden border border-black/10 bg-[#d7d7d7] shadow-[0_24px_60px_rgba(0,0,0,0.08)]"
+              aria-label={`Voir ${officeAddress} sur Google Maps`}
+            >
+              <iframe
+                src={mapEmbedSrc}
+                title={`Carte de ${officeAddress}`}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="pointer-events-none absolute -left-[170px] -top-[96px] h-[calc(100%+96px)] w-[calc(100%+170px)] border-0 transition-[filter,transform] duration-700 ease-out grayscale-0 md:grayscale md:group-hover:grayscale-0 group-hover:scale-[1.02]"
               />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <a
-                  href="https://maps.google.com/?q=123+Avenue+Habib+Bourguiba+Tunis"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <Button variant="outline" className="bg-white/80 backdrop-blur">
-                    Voir sur Google Maps
-                  </Button>
-                </a>
+
+              <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.10)_0%,rgba(255,255,255,0.03)_42%,rgba(248,246,242,0.86)_100%)] transition-opacity duration-500 group-hover:opacity-40" />
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.02)_0%,rgba(255,255,255,0.10)_52%,rgba(255,255,255,0.18)_100%)] transition-opacity duration-500 group-hover:opacity-30" />
+
+              <div className="pointer-events-none absolute bottom-6 left-6 max-w-[255px] border border-white/70 bg-white/88 px-6 py-5 shadow-[0_18px_40px_rgba(0,0,0,0.08)] backdrop-blur-sm">
+                <p className="text-[10px] font-medium uppercase tracking-[0.24em] text-muted-foreground">
+                  Rendez-nous visite
+                </p>
+                <p className="mt-3 text-[15px] leading-[1.7] text-foreground/80">
+                  Passez nous voir a Kairouan. Survolez la carte pour la reveler en couleur.
+                </p>
               </div>
-            </div>
+
+              <div className="absolute bottom-6 right-6 flex items-center gap-2 bg-white/82 px-4 py-3 text-[11px] font-medium uppercase tracking-[0.18em] text-foreground shadow-[0_10px_24px_rgba(0,0,0,0.08)] backdrop-blur-sm transition-colors duration-300 group-hover:bg-primary group-hover:text-white">
+                Voir sur Google Maps
+                <ArrowRight className="h-4 w-4" />
+              </div>
+            </a>
           </motion.div>
 
           <motion.div
