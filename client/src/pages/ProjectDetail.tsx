@@ -96,6 +96,8 @@ export default function ProjectDetail() {
                 <img 
                   src={img} 
                   alt={`Gallery ${i + 1}`}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-auto object-cover hover:scale-[1.02] transition-transform duration-700 ease-out"
                 />
               </motion.div>
