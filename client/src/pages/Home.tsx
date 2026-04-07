@@ -132,7 +132,7 @@ export default function Home() {
           <iframe
             src="https://www.youtube.com/embed/q8ayAG2hvjg?autoplay=1&mute=1&loop=1&playlist=q8ayAG2hvjg&controls=0&modestbranding=1&rel=0&playsinline=1&iv_load_policy=3&disablekb=1"
             title="Falfoul Architecture Hero Background"
-            className="absolute top-1/2 left-1/2 h-[56.25vw] w-[177.78vh] min-h-full min-w-full max-w-none -translate-x-1/2 -translate-y-1/2 scale-[1.16] md:scale-[1.12] pointer-events-none"
+            className="absolute top-1/2 left-1/2 h-[56.25vw] w-[177.78vh] min-h-full min-w-full max-w-none -translate-x-1/2 -translate-y-1/2 pointer-events-none"
             allow="autoplay; encrypted-media; picture-in-picture"
             referrerPolicy="strict-origin-when-cross-origin"
           />
