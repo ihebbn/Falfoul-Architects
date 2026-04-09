@@ -58,22 +58,21 @@ export const PROJECTS: Project[] = [
     description:
       "Ce projet illustre parfaitement notre approche moderne et minimaliste de l'architecture. Le projet part d'un bloc simple, d\u00E9licatement creus\u00E9 pour capter la lumi\u00E8re naturelle et ouvrir la maison sur le paysage. De grandes baies vitr\u00E9es et une pergola en marbre cr\u00E9ent un lien direct et fluide entre le salon et l'espace piscine. L'am\u00E9nagement int\u00E9rieur est pratique et clair, s\u00E9parant naturellement les pi\u00E8ces de vie au rez-de-chauss\u00E9e et les chambres \u00E0 l'\u00E9tage.",
     descriptionEn: null,
-    coverImage: "/images/casa-marbella/1(1).webp",
+    coverImage:
+      "https://res.cloudinary.com/dxpsm36t3/image/upload/v1775756932/1_1_unuj5a.webp",
     images: [
-      "/images/casa-marbella/1(1).webp",
-      "/images/casa-marbella/2(1).webp",
-      "/images/casa-marbella/3.webp",
-      "/images/casa-marbella/4.webp",
-      "/images/casa-marbella/5.webp",
-      "/images/casa-marbella/6.webp",
-      "/images/casa-marbella/axono.webp",
-      "/images/casa-marbella/photo 1.webp",
-      "/images/casa-marbella/photo 2.webp",
-      "/images/casa-marbella/photo 3.webp",
-      "/images/casa-marbella/photo 4.webp",
-      "/images/casa-marbella/photo 6.webp",
-      "/images/casa-marbella/photo 7.webp",
-      "/images/casa-marbella/photo 8.webp",
+      "https://res.cloudinary.com/dxpsm36t3/image/upload/v1775756932/1_1_unuj5a.webp",
+      "https://res.cloudinary.com/dxpsm36t3/image/upload/v1775756951/2_1_l2pjmq.webp",
+      "https://res.cloudinary.com/dxpsm36t3/image/upload/v1775756966/3_v1y9d9.webp",
+      "https://res.cloudinary.com/dxpsm36t3/image/upload/v1775757079/4_uo5twn.webp",
+      "https://res.cloudinary.com/dxpsm36t3/image/upload/v1775757079/5_h1dxvu.webp",
+      "https://res.cloudinary.com/dxpsm36t3/image/upload/v1775757082/axono_r94784.webp",
+      "https://res.cloudinary.com/dxpsm36t3/image/upload/v1775757082/photo_1_n1vyl3.webp",
+      "https://res.cloudinary.com/dxpsm36t3/image/upload/v1775757082/photo_2_r1e75w.webp",
+      "https://res.cloudinary.com/dxpsm36t3/image/upload/v1775757083/photo_6_bvuvyj.webp",
+      "https://res.cloudinary.com/dxpsm36t3/image/upload/v1775757082/photo_4_gb4qzn.webp",
+      "https://res.cloudinary.com/dxpsm36t3/image/upload/v1775757567/photo_3_khrykn.webp",
+      "https://res.cloudinary.com/dxpsm36t3/image/upload/v1775757568/photo_4_jujmue.webp",
     ],
     distinctions: [],
     isFeatured: true,
@@ -451,6 +450,7 @@ export const EVENTS: Event[] = [
 export function getProjectById(id: number) {
   return PROJECTS.find((project) => project.id === id) ?? null;
 }
+
 
 
 
