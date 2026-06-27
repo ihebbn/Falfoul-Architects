@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 
+const SHOW_EVENTS_IN_NAV = false;
+
 export function Navbar() {
   const [location] = useLocation();
   const [scrolled, setScrolled] = useState(false);
@@ -21,7 +23,7 @@ export function Navbar() {
   const links = [
     { href: "/", label: "Accueil" },
     { href: "/projects", label: "Projets" },
-    { href: "/events", label: "Événements" },
+    ...(SHOW_EVENTS_IN_NAV ? [{ href: "/events", label: "Événements" }] : []),
     { href: "/contact", label: "Contact" },
   ];
 
