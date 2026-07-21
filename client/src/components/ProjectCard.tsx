@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 import type { Project } from "@/data/site-data";
 import { motion } from "framer-motion";
+import { cloudinaryImage } from "@/lib/utils";
 
 export function ProjectCard({ project, className }: { project: Project, className?: string }) {
   return (
@@ -14,7 +15,7 @@ export function ProjectCard({ project, className }: { project: Project, classNam
       >
         <div className="relative flex-1 overflow-hidden bg-muted mb-4">
           <img
-            src={project.coverImage}
+            src={cloudinaryImage(project.coverImage, 900)}
             alt={project.title}
             loading="lazy"
             decoding="async"

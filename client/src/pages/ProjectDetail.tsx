@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/accordion";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "wouter";
+import { cloudinaryImage } from "@/lib/utils";
 
 export default function ProjectDetail() {
   const [match, params] = useRoute("/projects/:id");
@@ -35,7 +36,7 @@ export default function ProjectDetail() {
           className="absolute inset-0"
         >
           <img 
-            src={project.coverImage} 
+            src={cloudinaryImage(project.coverImage, 1920)} 
             alt={project.title}
             className="w-full h-full object-cover"
           />
@@ -94,7 +95,7 @@ export default function ProjectDetail() {
                 className="overflow-hidden"
               >
                 <img 
-                  src={img} 
+                  src={cloudinaryImage(img, 1400)} 
                   alt={`Gallery ${i + 1}`}
                   loading="lazy"
                   decoding="async"

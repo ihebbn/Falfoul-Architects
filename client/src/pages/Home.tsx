@@ -1,7 +1,7 @@
 import { useProjects } from "@/hooks/use-projects";
 import { PROJECT_CATEGORIES } from "@/data/site-data";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { cloudinaryImage, cn } from "@/lib/utils";
 import { Link } from "wouter";
 import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, ChevronDown } from "lucide-react";
@@ -359,7 +359,7 @@ export default function Home() {
                               )}
                             >
                               <img
-                                src={project.coverImage}
+                                src={cloudinaryImage(project.coverImage, 900)}
                                 alt={project.title}
                                 loading="lazy"
                                 decoding="async"
