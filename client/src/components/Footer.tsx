@@ -23,21 +23,27 @@ export function Footer() {
 
           <div className="mt-6 flex items-center gap-3.5">
             <a
-              href="#"
+              href="https://www.facebook.com/falfoularchitecture/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex h-9 w-9 items-center justify-center border border-white/20 text-white/65 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/70 hover:text-primary"
               aria-label="Facebook"
             >
               <Facebook className="h-4 w-4" strokeWidth={1.5} />
             </a>
             <a
-              href="#"
+              href="https://www.instagram.com/falfoularchitecture/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex h-9 w-9 items-center justify-center border border-white/20 text-white/65 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/70 hover:text-primary"
               aria-label="Instagram"
             >
               <Instagram className="h-4 w-4" strokeWidth={1.5} />
             </a>
             <a
-              href="#"
+              href="https://www.linkedin.com/in/aymen-falfoul-3930b981/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex h-9 w-9 items-center justify-center border border-white/20 text-white/65 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/70 hover:text-primary"
               aria-label="LinkedIn"
             >
