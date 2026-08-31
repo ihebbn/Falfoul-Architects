@@ -5,6 +5,19 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 
+/** Alternating row heights: tall → short → tall → short … */
+const getRowImageAspect = (index: number) => {
+  const mobileTall = index % 2 === 0;
+  const mdTall = Math.floor(index / 2) % 2 === 0;
+  const lgTall = Math.floor(index / 3) % 2 === 0;
+
+  return cn(
+    mobileTall ? "aspect-[3/4]" : "aspect-[4/3]",
+    mdTall ? "md:aspect-[3/4]" : "md:aspect-[4/3]",
+    lgTall ? "lg:aspect-[3/4]" : "lg:aspect-[4/3]"
+  );
+};
+
 export default function Projects() {
   const { data: projects, isLoading } = useProjects();
   const [activeCategory, setActiveCategory] = useState("TOUS");
@@ -51,11 +64,11 @@ export default function Projects() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-x-12 md:gap-y-16">
           {isLoading ? (
             Array(6).fill(0).map((_, i) => (
-              <div key={i} className="aspect-[4/3] bg-muted animate-pulse" />
+              <div key={i} className={cn("bg-muted animate-pulse", getRowImageAspect(i))} />
             ))
           ) : (
             <AnimatePresence mode="popLayout">
-              {filteredProjects?.map((project) => (
+              {filteredProjects?.map((project, index) => (
                 <motion.div
                   key={project.id}
                   layout
@@ -64,7 +77,10 @@ export default function Projects() {
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <ProjectCard project={project} />
+                  <ProjectCard
+                    project={project}
+                    imageClassName={getRowImageAspect(index)}
+                  />
                 </motion.div>
               ))}
             </AnimatePresence>

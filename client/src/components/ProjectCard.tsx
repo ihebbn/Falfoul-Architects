@@ -1,9 +1,17 @@
 import { Link } from "wouter";
 import type { Project } from "@/data/site-data";
 import { motion } from "framer-motion";
-import { cloudinaryImage } from "@/lib/utils";
+import { cloudinaryImage, cn } from "@/lib/utils";
 
-export function ProjectCard({ project, className }: { project: Project, className?: string }) {
+export function ProjectCard({
+  project,
+  className,
+  imageClassName,
+}: {
+  project: Project;
+  className?: string;
+  imageClassName?: string;
+}) {
   return (
     <Link href={`/projects/${project.id}`}>
       <motion.div
@@ -11,15 +19,20 @@ export function ProjectCard({ project, className }: { project: Project, classNam
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className={`group cursor-pointer block h-full flex flex-col ${className}`}
+        className={cn("group cursor-pointer block h-full flex flex-col", className)}
       >
-        <div className="relative flex-1 overflow-hidden bg-muted mb-4">
+        <div
+          className={cn(
+            "relative overflow-hidden bg-muted mb-4 aspect-[4/3]",
+            imageClassName
+          )}
+        >
           <img
             src={cloudinaryImage(project.coverImage, 900)}
             alt={project.title}
             loading="lazy"
             decoding="async"
-            className="object-cover w-full h-full transition-transform duration-700 ease-out group-hover:scale-105"
+            className="absolute inset-0 object-cover w-full h-full transition-transform duration-700 ease-out group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500" />
 
