@@ -1,7 +1,7 @@
 import { useProjects } from "@/hooks/use-projects";
-import { PROJECT_CATEGORIES } from "@/data/site-data";
+import { HERO_VIDEO_URL, PROJECT_CATEGORIES } from "@/data/site-data";
 import { Button } from "@/components/ui/button";
-import { cloudinaryImage, cn } from "@/lib/utils";
+import { cloudinaryImage, cloudinaryVideo, cn } from "@/lib/utils";
 import { Link } from "wouter";
 import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, ChevronDown } from "lucide-react";
@@ -98,9 +98,9 @@ const getProjectCardOffsetClass = (
 export default function Home() {
   const { data: projects, isLoading } = useProjects();
   const [activeCategory, setActiveCategory] = useState("TOUS");
-  const [showHeroTitle, setShowHeroTitle] = useState(true);
-  const [showHeroDescription, setShowHeroDescription] = useState(true);
+  const [showHeroIntro, setShowHeroIntro] = useState(true);
   const heroRef = useRef<HTMLDivElement>(null);
+  const heroVideoRef = useRef<HTMLVideoElement>(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ["start start", "end start"]
@@ -114,45 +114,24 @@ export default function Home() {
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
-      setShowHeroTitle(false);
-      setShowHeroDescription(false);
-    }, 2000);
+      setShowHeroIntro(false);
+    }, 2400);
 
     return () => window.clearTimeout(timer);
   }, []);
 
-  // The pause/skip overlay is YouTube's own "paused" UI, drawn inside the
-  // iframe where CSS can't hide it. Force playback to resume immediately so
-  // the overlay never stays on screen.
   useEffect(() => {
-    const setupPlayer = () => {
-      const YT = (window as any).YT;
-      if (!YT?.Player) return;
-      new YT.Player("hero-bg-video", {
-        events: {
-          onStateChange: (event: any) => {
-            if (
-              event.data === YT.PlayerState.PAUSED ||
-              event.data === YT.PlayerState.ENDED
-            ) {
-              event.target.playVideo();
-            }
-          },
-        },
-      });
+    const video = heroVideoRef.current;
+    if (!video) return;
+
+    const resumePlayback = () => {
+      if (document.visibilityState === "visible" && video.paused) {
+        void video.play();
+      }
     };
 
-    if ((window as any).YT?.Player) {
-      setupPlayer();
-      return;
-    }
-
-    (window as any).onYouTubeIframeAPIReady = setupPlayer;
-    if (!document.querySelector('script[src="https://www.youtube.com/iframe_api"]')) {
-      const script = document.createElement("script");
-      script.src = "https://www.youtube.com/iframe_api";
-      document.head.appendChild(script);
-    }
+    document.addEventListener("visibilitychange", resumePlayback);
+    return () => document.removeEventListener("visibilitychange", resumePlayback);
   }, []);
 
   return (
@@ -163,14 +142,18 @@ export default function Home() {
           style={{ y }}
           className="absolute inset-0 z-0 overflow-hidden bg-black"
         >
-          <iframe
-            id="hero-bg-video"
-            src="https://www.youtube.com/embed/q8ayAG2hvjg?autoplay=1&mute=1&loop=1&playlist=q8ayAG2hvjg&controls=0&modestbranding=1&rel=0&playsinline=1&iv_load_policy=3&disablekb=1&enablejsapi=1"
-            title="Falfoul Architecture Hero Background"
-            className="absolute top-1/2 left-1/2 h-[56.25vw] w-[177.78vh] min-h-full min-w-full max-w-none -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-            allow="autoplay; encrypted-media; picture-in-picture"
-            referrerPolicy="strict-origin-when-cross-origin"
-          />
+          <video
+            ref={heroVideoRef}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            aria-hidden="true"
+            className="absolute inset-0 h-full w-full object-cover pointer-events-none"
+          >
+            <source src={cloudinaryVideo(HERO_VIDEO_URL)} type="video/mp4" />
+          </video>
           <div className="absolute inset-0 bg-black/35" />
         </motion.div>
 
@@ -179,33 +162,30 @@ export default function Home() {
           className="relative z-10 text-center px-6 max-w-4xl mx-auto"
         >
           <AnimatePresence>
-            {showHeroTitle && (
+            {showHeroIntro && (
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.65, ease: "easeInOut" }}
-                className="mb-6"
+                key="hero-intro"
+                initial={{ opacity: 0, y: 28 }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] },
+                }}
+                exit={{
+                  opacity: 0,
+                  transition: { duration: 1.1, ease: [0.4, 0, 0.2, 1] },
+                }}
               >
                 <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-white tracking-tight">
                   FALFOUL <br />
                   <span className="text-primary font-light italic">Architecture</span>
                 </h1>
+                <p className="mt-6 text-lg md:text-xl text-white/90 max-w-2xl mx-auto font-light leading-relaxed">
+                  Agence spécialisée en architecture contemporaine et design.
+                  <br />
+                  Créons ensemble des espaces qui respirent.
+                </p>
               </motion.div>
-            )}
-          </AnimatePresence>
-          <AnimatePresence>
-            {showHeroDescription && (
-              <motion.p
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8, transition: { duration: 0.35, ease: "easeOut" } }}
-                transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-                className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto font-light leading-relaxed"
-              >
-                Agence spécialisée en architecture contemporaine et design.
-                <br />Créons ensemble des espaces qui respirent.
-              </motion.p>
             )}
           </AnimatePresence>
         </motion.div>

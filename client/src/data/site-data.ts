@@ -32,6 +32,9 @@ export type Event = {
   createdAt: Date;
 };
 
+export const HERO_VIDEO_URL =
+  "https://res.cloudinary.com/dxpsm36t3/video/upload/v1788176671/video_ouverture_final_ojwq0s.mp4";
+
 export const PROJECT_CATEGORIES = [
   "TOUS",
   "Concours et batiments civils",

@@ -16,3 +16,10 @@ export function cloudinaryImage(url: string, width = 900): string {
   }
   return url.replace("/upload/", `/upload/f_auto,q_auto,w_${width},c_limit/`);
 }
+
+export function cloudinaryVideo(url: string, width = 1920): string {
+  if (!url.includes("res.cloudinary.com") || !url.includes("/upload/")) {
+    return url;
+  }
+  return url.replace("/upload/", `/upload/f_auto,q_auto,w_${width},c_limit/`);
+}
