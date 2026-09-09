@@ -1,6 +1,8 @@
 import { useProjects } from "@/hooks/use-projects";
 import { PROJECT_CATEGORIES } from "@/data/site-data";
 import { ProjectCard } from "@/components/ProjectCard";
+import { useLanguage } from "@/i18n/language-context";
+import { localizeCategory } from "@/i18n/localize";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -20,6 +22,7 @@ const getRowImageAspect = (index: number) => {
 
 export default function Projects() {
   const { data: projects, isLoading } = useProjects();
+  const { t, language } = useLanguage();
   const [activeCategory, setActiveCategory] = useState("TOUS");
 
   const filteredProjects = projects?.filter(p => 
@@ -35,10 +38,9 @@ export default function Projects() {
           transition={{ duration: 0.6 }}
           className="mb-16 text-center"
         >
-          <h1 className="mx-auto mb-6 max-w-[900px] font-['Montserrat'] text-[clamp(1.9rem,3.8vw,2.625rem)] font-medium tracking-[0.02em] text-[#3a3a3a] leading-[1.1]">Nos Projets</h1>
+          <h1 className="mx-auto mb-6 max-w-[900px] font-['Montserrat'] text-[clamp(1.9rem,3.8vw,2.625rem)] font-medium tracking-[0.02em] text-[#3a3a3a] leading-[1.1]">{t("projects.title")}</h1>
           <p className="mx-auto max-w-[680px] font-['Montserrat'] text-[16px] text-foreground/85 leading-[1.75]">
-            Une collection de nos réalisations les plus marquantes, témoignant de notre engagement 
-            envers l'excellence architecturale et l'innovation durable.
+            {t("projects.intro")}
           </p>
         </motion.div>
 
@@ -55,7 +57,7 @@ export default function Projects() {
                   : "px-3.5 py-1.5 text-muted-foreground hover:text-foreground hover:border-foreground/20"
               )}
             >
-              {cat}
+                {localizeCategory(cat, language)}
             </button>
           ))}
         </div>

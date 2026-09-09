@@ -6,6 +6,8 @@ import { Link } from "wouter";
 import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { useLanguage } from "@/i18n/language-context";
+import { localizeCategory, localizeProject } from "@/i18n/localize";
 type CardVariant = "standard" | "medium" | "tall";
 
 const CARD_VARIANT_CLASSES: Record<CardVariant, string> = {
@@ -97,6 +99,7 @@ const getProjectCardOffsetClass = (
 
 export default function Home() {
   const { data: projects, isLoading } = useProjects();
+  const { t, language } = useLanguage();
   const [activeCategory, setActiveCategory] = useState("TOUS");
   const [showHeroIntro, setShowHeroIntro] = useState(true);
   const heroRef = useRef<HTMLDivElement>(null);
@@ -181,9 +184,9 @@ export default function Home() {
                   <span className="text-primary font-light italic">Architecture</span>
                 </h1>
                 <p className="mt-6 text-lg md:text-xl text-white/90 max-w-2xl mx-auto font-light leading-relaxed">
-                  Agence spécialisée en architecture contemporaine et design.
+                  {t("home.heroLine1")}
                   <br />
-                  Créons ensemble des espaces qui respirent.
+                  {t("home.heroLine2")}
                 </p>
               </motion.div>
             )}
@@ -218,7 +221,7 @@ export default function Home() {
             transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
             className="mx-auto max-w-[900px] text-[clamp(2.2rem,5.2vw,3.4rem)] font-medium tracking-[0.012em] text-foreground mb-10 md:mb-12 leading-[1.1]"
           >
-            Histoire de FALFOUL Architecture
+            {t("home.aboutTitle")}
           </motion.h2>
           <motion.div
             initial={{ opacity: 0, y: 14 }}
@@ -227,16 +230,8 @@ export default function Home() {
             transition={{ duration: 0.65, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
             className="mx-auto max-w-[680px] space-y-6 text-[16px] text-foreground/85 leading-[1.75]"
           >
-            <p>
-              Fondée sur une vision de pureté structurelle, FALFOUL Architecture est née de la volonté
-              de redéfinir le paysage urbain à travers le prisme de la modernité et de la durabilité.
-              Notre histoire est celle d'une quête incessante de l'harmonie entre l'homme et son environnement.
-            </p>
-            <p>
-              Depuis nos débuts, nous avons privilégié une approche minimaliste où chaque ligne, chaque
-              matériau et chaque source de lumière naturelle est méticuleusement orchestré pour créer
-              des espaces qui respirent et inspirent.
-            </p>
+            <p>{t("home.aboutP1")}</p>
+            <p>{t("home.aboutP2")}</p>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 12 }}
@@ -247,7 +242,7 @@ export default function Home() {
           >
             <Link href="/contact" className="inline-block">
               <Button variant="outline" className="rounded-none border border-foreground/75 px-7 md:px-8 py-3.5 md:py-4 text-[11px] md:text-xs font-medium tracking-[1.9px] uppercase text-foreground transition-colors duration-300 ease-out hover:bg-foreground hover:text-background">
-                Démarrer un projet
+                {t("home.startProject")}
               </Button>
             </Link>
           </motion.div>
@@ -259,7 +254,7 @@ export default function Home() {
         <div className="max-w-[2400px] mx-auto px-2 sm:px-3 lg:px-4 xl:px-5">
 
           <div className="text-center mb-6 md:mb-7">
-            <h2 className="relative -top-[7px] mx-auto max-w-[900px] font-['Montserrat'] text-[clamp(1.9rem,3.8vw,2.625rem)] font-medium tracking-[0.02em] text-[#3a3a3a] leading-[1.1]">Projets Récents</h2>
+            <h2 className="relative -top-[7px] mx-auto max-w-[900px] font-['Montserrat'] text-[clamp(1.9rem,3.8vw,2.625rem)] font-medium tracking-[0.02em] text-[#3a3a3a] leading-[1.1]">{t("home.recentProjects")}</h2>
           </div>
 
           <div className="flex flex-wrap justify-center gap-3 md:gap-4 mb-12 md:mb-14">
@@ -274,7 +269,7 @@ export default function Home() {
                     : "px-3.5 py-1.5 text-muted-foreground hover:text-foreground hover:border-foreground/20"
                 )}
               >
-                {cat}
+                {localizeCategory(cat, language)}
               </button>
             ))}
           </div>
@@ -324,6 +319,7 @@ export default function Home() {
                   className="columns-1 md:columns-2 lg:columns-3 gap-4 md:gap-5"
                 >
                   {filteredProjects?.map((project, index) => {
+                    const localized = localizeProject(project, language);
                     const cardVariant = getProjectCardVariant(
                       project.id,
                       index,
@@ -375,14 +371,14 @@ export default function Home() {
                             >
                               <img
                                 src={cloudinaryImage(project.coverImage, 900)}
-                                alt={project.title}
+                                alt={localized.title}
                                 loading="lazy"
                                 decoding="async"
                                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
                               />
                               <div className="absolute inset-0 bg-[#4A4A4A]/0 transition-colors duration-300 group-hover:bg-[#4A4A4A]/40" />
                               <div className="absolute inset-0 flex flex-col items-center justify-center p-5 text-center translate-y-3 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-                                <h3 className="text-white font-display text-2xl leading-tight">{project.title}</h3>
+                                <h3 className="text-white font-display text-2xl leading-tight">{localized.title}</h3>
                                 <p className="mt-2 text-sm text-white/90 tracking-wide">
                                   {project.location} <span className="text-[#E5A90A]">•</span> {project.year}
                                 </p>
@@ -401,7 +397,7 @@ export default function Home() {
           <div className="mt-12 text-center">
             <Link href="/projects">
               <Button variant="ghost" className="text-foreground hover:text-primary">
-                Voir tous les projets <ArrowRight className="ml-2 w-4 h-4" />
+                {t("home.viewAll")} <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
             </Link>
           </div>
@@ -413,15 +409,14 @@ export default function Home() {
         <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]" />
         <div className="max-w-4xl mx-auto text-center relative z-10 font-['Montserrat']">
           <h2 className="text-3xl md:text-5xl font-medium tracking-[0.012em] mb-8">
-            Prêt à concrétiser votre vision ?
+            {t("home.ctaTitle")}
           </h2>
           <p className="text-white/60 text-lg font-normal leading-relaxed mb-10 max-w-2xl mx-auto">
-            Discutons de votre projet autour d'un café ou en visio.
-            La première consultation est l'occasion de définir les contours de vos ambitions.
+            {t("home.ctaText")}
           </p>
           <Link href="/contact">
             <Button className="bg-primary hover:bg-primary/90 text-white px-10 py-6 text-lg rounded-none uppercase tracking-widest font-bold shadow-lg shadow-primary/20">
-              Prendre rendez-vous
+              {t("home.ctaButton")}
             </Button>
           </Link>
         </div>

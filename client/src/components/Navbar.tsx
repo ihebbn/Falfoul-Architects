@@ -3,11 +3,66 @@ import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { useLanguage } from "@/i18n/language-context";
+import type { Language } from "@/i18n/translations";
 
 const SHOW_EVENTS_IN_NAV = false;
 
+function LanguageToggle({
+  language,
+  setLanguage,
+  isSolidNavbar,
+  className,
+  label,
+}: {
+  language: Language;
+  setLanguage: (language: Language) => void;
+  isSolidNavbar: boolean;
+  className?: string;
+  label: string;
+}) {
+  return (
+    <div
+      className={cn("flex items-center gap-1.5", className)}
+      role="group"
+      aria-label={label}
+    >
+      {(["fr", "en"] as const).map((code, index) => (
+        <span key={code} className="flex items-center gap-1.5">
+          {index > 0 && (
+            <span
+              className={cn(
+                "text-[11px]",
+                isSolidNavbar ? "text-foreground/30" : "text-white/40"
+              )}
+            >
+              /
+            </span>
+          )}
+          <button
+            type="button"
+            onClick={() => setLanguage(code)}
+            className={cn(
+              "font-['Montserrat'] text-[11px] font-medium tracking-[1.5px] uppercase transition-colors",
+              language === code
+                ? "text-primary"
+                : isSolidNavbar
+                  ? "text-foreground/55 hover:text-foreground"
+                  : "text-white/70 hover:text-white"
+            )}
+            aria-pressed={language === code}
+          >
+            {code}
+          </button>
+        </span>
+      ))}
+    </div>
+  );
+}
+
 export function Navbar() {
   const [location] = useLocation();
+  const { t, language, setLanguage } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const forceSolidNavbar =
@@ -21,10 +76,10 @@ export function Navbar() {
   }, []);
 
   const links = [
-    { href: "/", label: "Accueil" },
-    { href: "/projects", label: "Projets" },
-    ...(SHOW_EVENTS_IN_NAV ? [{ href: "/events", label: "Événements" }] : []),
-    { href: "/contact", label: "Contact" },
+    { href: "/", label: t("nav.home") },
+    { href: "/projects", label: t("nav.projects") },
+    ...(SHOW_EVENTS_IN_NAV ? [{ href: "/events", label: t("nav.events") }] : []),
+    { href: "/contact", label: t("nav.contact") },
   ];
 
   return (
@@ -46,14 +101,13 @@ export function Navbar() {
           />
         </Link>
 
-        {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-10">
           {links.map((link) => (
             <Link key={link.href} href={link.href}>
               <span className={cn(
                 "relative font-['Montserrat'] text-[13px] font-medium tracking-[1.5px] uppercase cursor-pointer group py-1 transition-colors",
-                location === link.href 
-                  ? "text-primary" 
+                location === link.href
+                  ? "text-primary"
                   : isSolidNavbar ? "text-foreground hover:text-primary" : "text-white mix-blend-difference hover:text-primary"
               )}>
                 {link.label}
@@ -64,20 +118,36 @@ export function Navbar() {
               </span>
             </Link>
           ))}
+          <LanguageToggle
+            language={language}
+            setLanguage={setLanguage}
+            isSolidNavbar={isSolidNavbar}
+            label={t("nav.language")}
+          />
         </div>
 
-        {/* Mobile Toggle */}
-        <button 
-          className="md:hidden text-foreground p-1.5"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        >
-          {mobileMenuOpen ? <X /> : <Menu />}
-        </button>
+        <div className="flex items-center gap-4 md:hidden">
+          <LanguageToggle
+            language={language}
+            setLanguage={setLanguage}
+            isSolidNavbar={isSolidNavbar}
+            label={t("nav.language")}
+          />
+          <button
+            className={cn(
+              "p-1.5",
+              isSolidNavbar ? "text-foreground" : "text-white"
+            )}
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label={mobileMenuOpen ? t("nav.closeMenu") : t("nav.openMenu")}
+          >
+            {mobileMenuOpen ? <X /> : <Menu />}
+          </button>
+        </div>
       </div>
 
-      {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
@@ -86,7 +156,7 @@ export function Navbar() {
           <div className="flex flex-col space-y-4">
             {links.map((link) => (
               <Link key={link.href} href={link.href}>
-                <span 
+                <span
                   className={cn(
                     "block font-['Montserrat'] text-[13px] font-medium tracking-[1.5px] uppercase cursor-pointer",
                     location === link.href ? "text-primary" : "text-foreground"

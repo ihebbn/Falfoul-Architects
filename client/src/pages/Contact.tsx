@@ -8,20 +8,33 @@ import { Textarea } from "@/components/ui/textarea";
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, ArrowRight } from "lucide-react";
 import {
-  contactFormSchema,
+  createContactFormSchema,
   type ContactFormValues,
 } from "@/lib/contact-form";
+import { useLanguage } from "@/i18n/language-context";
+import { useEffect, useMemo, useRef } from "react";
 
 export default function Contact() {
   const { toast } = useToast();
   const mutation = useContactMutation();
+  const { t, language } = useLanguage();
+  const tRef = useRef(t);
+  tRef.current = t;
   const officeAddress = "M36R+RGW, Kairouan";
   const mapQuery = encodeURIComponent(`${officeAddress}, Tunisia`);
   const mapHref = `https://www.google.com/maps/search/?api=1&query=${mapQuery}`;
   const mapEmbedSrc = `https://www.google.com/maps?q=${mapQuery}&z=17&output=embed`;
 
+  const resolver = useMemo(
+    () =>
+      zodResolver(
+        createContactFormSchema((key) => tRef.current(key))
+      ),
+    []
+  );
+
   const form = useForm<ContactFormValues>({
-    resolver: zodResolver(contactFormSchema),
+    resolver,
     defaultValues: {
       name: "",
       email: "",
@@ -30,25 +43,30 @@ export default function Contact() {
     },
   });
 
+  useEffect(() => {
+    form.clearErrors();
+  }, [language, form]);
+
   const onSubmit = (data: ContactFormValues) => {
     mutation.mutate(data, {
       onSuccess: () => {
         toast({
-          title: "Message envoye",
-          description:
-            "Merci. Votre message a bien ete transmis et nous reviendrons vers vous rapidement.",
+          title: t("contact.successTitle"),
+          description: t("contact.successBody"),
         });
         form.reset();
       },
       onError: (error) => {
         toast({
           variant: "destructive",
-          title: "Erreur",
+          title: t("contact.errorTitle"),
           description: error.message,
         });
       },
     });
   };
+
+  const introLines = t("contact.intro").split("\n");
 
   return (
     <div className="min-h-screen bg-background pt-32 pb-24 px-6 font-['Montserrat']">
@@ -60,11 +78,11 @@ export default function Contact() {
             transition={{ duration: 0.6 }}
           >
             <h1 className="mb-8 max-w-[900px] text-[clamp(1.9rem,3.8vw,2.625rem)] font-medium tracking-[0.02em] text-[#3a3a3a] leading-[1.1]">
-              Contact
+              {t("contact.title")}
             </h1>
             <p className="mb-12 max-w-[680px] text-[16px] text-foreground/85 leading-[1.75]">
-              Vous avez un projet ? Une question ? <br />
-              N'hesitez pas a nous ecrire ou a venir nous rencontrer a l'agence.
+              {introLines[0]} <br />
+              {introLines[1]}
             </p>
 
             <div className="space-y-8">
@@ -74,12 +92,12 @@ export default function Contact() {
                 </div>
                 <div>
                   <h3 className="mb-2 text-[12px] md:text-[13px] font-medium uppercase tracking-[0.11em] text-foreground">
-                    Notre Agence
+                    {t("contact.office")}
                   </h3>
                   <p className="text-[16px] text-foreground/85 leading-[1.75]">
                     {officeAddress}
                     <br />
-                    Kairouan, Tunisie
+                    {t("contact.country")}
                   </p>
                 </div>
               </div>
@@ -90,7 +108,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h3 className="mb-2 text-[12px] md:text-[13px] font-medium uppercase tracking-[0.11em] text-foreground">
-                    Email
+                    {t("contact.email")}
                   </h3>
                   <a
                     href="mailto:contact@falfoul-archi.com"
@@ -107,7 +125,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h3 className="mb-2 text-[12px] md:text-[13px] font-medium uppercase tracking-[0.11em] text-foreground">
-                    Telephone
+                    {t("contact.phone")}
                   </h3>
                   <p className="text-[16px] text-foreground/85 leading-[1.75]">
                     +216 71 123 456
@@ -121,11 +139,11 @@ export default function Contact() {
               target="_blank"
               rel="noreferrer"
               className="group relative mt-12 block h-[350px] overflow-hidden border border-black/10 bg-[#d7d7d7] shadow-[0_24px_60px_rgba(0,0,0,0.08)]"
-              aria-label={`Voir ${officeAddress} sur Google Maps`}
+              aria-label={t("contact.mapAria", { address: officeAddress })}
             >
               <iframe
                 src={mapEmbedSrc}
-                title={`Carte de ${officeAddress}`}
+                title={t("contact.mapTitle", { address: officeAddress })}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 className="pointer-events-none absolute -left-[170px] -top-[96px] h-[calc(100%+96px)] w-[calc(100%+170px)] border-0 transition-[filter,transform] duration-700 ease-out grayscale-0 md:grayscale md:group-hover:grayscale-0 group-hover:scale-[1.02]"
@@ -136,15 +154,15 @@ export default function Contact() {
 
               <div className="pointer-events-none absolute bottom-6 left-6 max-w-[255px] border border-white/70 bg-white/88 px-6 py-5 shadow-[0_18px_40px_rgba(0,0,0,0.08)] backdrop-blur-sm">
                 <p className="text-[10px] font-medium uppercase tracking-[0.24em] text-muted-foreground">
-                  Rendez-nous visite
+                  {t("contact.visitUs")}
                 </p>
                 <p className="mt-3 text-[15px] leading-[1.7] text-foreground/80">
-                  Passez nous voir a Kairouan. Survolez la carte pour la reveler en couleur.
+                  {t("contact.mapHint")}
                 </p>
               </div>
 
               <div className="absolute bottom-6 right-6 flex items-center gap-2 bg-white/82 px-4 py-3 text-[11px] font-medium uppercase tracking-[0.18em] text-foreground shadow-[0_10px_24px_rgba(0,0,0,0.08)] backdrop-blur-sm transition-colors duration-300 group-hover:bg-primary group-hover:text-white">
-                Voir sur Google Maps
+                {t("contact.viewOnMaps")}
                 <ArrowRight className="h-4 w-4" />
               </div>
             </a>
@@ -157,7 +175,7 @@ export default function Contact() {
             className="bg-white p-8 md:p-12 shadow-lg shadow-black/5 border border-border"
           >
             <h2 className="mb-8 text-[clamp(1.35rem,2.2vw,1.8rem)] font-medium tracking-[0.02em] text-[#3a3a3a] leading-[1.15]">
-              Envoyez-nous un message
+              {t("contact.formTitle")}
             </h2>
 
             <form
@@ -173,12 +191,12 @@ export default function Contact() {
 
               <div className="space-y-2">
                 <label className="text-[12px] md:text-[13px] font-medium uppercase tracking-[0.11em] text-muted-foreground">
-                  Nom complet
+                  {t("contact.name")}
                 </label>
                 <Input
                   {...form.register("name")}
                   className="bg-background border-border focus:border-primary rounded-none h-12"
-                  placeholder="Jean Dupont"
+                  placeholder={t("contact.namePlaceholder")}
                 />
                 {form.formState.errors.name && (
                   <p className="text-destructive text-sm">
@@ -189,13 +207,13 @@ export default function Contact() {
 
               <div className="space-y-2">
                 <label className="text-[12px] md:text-[13px] font-medium uppercase tracking-[0.11em] text-muted-foreground">
-                  Email
+                  {t("contact.email")}
                 </label>
                 <Input
                   {...form.register("email")}
                   type="email"
                   className="bg-background border-border focus:border-primary rounded-none h-12"
-                  placeholder="jean@exemple.com"
+                  placeholder={t("contact.emailPlaceholder")}
                 />
                 {form.formState.errors.email && (
                   <p className="text-destructive text-sm">
@@ -206,12 +224,12 @@ export default function Contact() {
 
               <div className="space-y-2">
                 <label className="text-[12px] md:text-[13px] font-medium uppercase tracking-[0.11em] text-muted-foreground">
-                  Sujet
+                  {t("contact.subject")}
                 </label>
                 <Input
                   {...form.register("subject")}
                   className="bg-background border-border focus:border-primary rounded-none h-12"
-                  placeholder="Demande de devis"
+                  placeholder={t("contact.subjectPlaceholder")}
                 />
                 {form.formState.errors.subject && (
                   <p className="text-destructive text-sm">
@@ -222,12 +240,12 @@ export default function Contact() {
 
               <div className="space-y-2">
                 <label className="text-[12px] md:text-[13px] font-medium uppercase tracking-[0.11em] text-muted-foreground">
-                  Message
+                  {t("contact.message")}
                 </label>
                 <Textarea
                   {...form.register("message")}
                   className="bg-background border-border focus:border-primary rounded-none min-h-[150px] resize-none"
-                  placeholder="Parlez-nous de votre projet..."
+                  placeholder={t("contact.messagePlaceholder")}
                 />
                 {form.formState.errors.message && (
                   <p className="text-destructive text-sm">
@@ -241,7 +259,7 @@ export default function Contact() {
                 disabled={mutation.isPending}
                 className="w-full bg-primary hover:bg-primary/90 text-white h-14 rounded-none uppercase tracking-widest font-bold text-sm shadow-md"
               >
-                {mutation.isPending ? "Envoi..." : "Envoyer le message"}
+                {mutation.isPending ? t("contact.sending") : t("contact.submit")}
                 {!mutation.isPending && <ArrowRight className="ml-2 w-4 h-4" />}
               </Button>
             </form>

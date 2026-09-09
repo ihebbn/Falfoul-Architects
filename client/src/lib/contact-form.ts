@@ -1,10 +1,15 @@
 import { z } from "zod";
+import type { TranslationKey } from "@/i18n/translations";
 
-export const contactFormSchema = z.object({
-  name: z.string().trim().min(2, "Veuillez renseigner votre nom."),
-  email: z.string().trim().email("Veuillez renseigner un email valide."),
-  subject: z.string().trim().min(3, "Veuillez preciser le sujet."),
-  message: z.string().trim().min(10, "Veuillez decrire votre demande."),
-});
+type Translate = (key: TranslationKey) => string;
 
-export type ContactFormValues = z.infer<typeof contactFormSchema>;
+export function createContactFormSchema(t: Translate) {
+  return z.object({
+    name: z.string().trim().min(2, t("contact.errorName")),
+    email: z.string().trim().email(t("contact.errorEmail")),
+    subject: z.string().trim().min(3, t("contact.errorSubject")),
+    message: z.string().trim().min(10, t("contact.errorMessage")),
+  });
+}
+
+export type ContactFormValues = z.infer<ReturnType<typeof createContactFormSchema>>;

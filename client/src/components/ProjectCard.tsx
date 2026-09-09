@@ -2,6 +2,8 @@ import { Link } from "wouter";
 import type { Project } from "@/data/site-data";
 import { motion } from "framer-motion";
 import { cloudinaryImage, cn } from "@/lib/utils";
+import { useLanguage } from "@/i18n/language-context";
+import { localizeCategory, localizeProject } from "@/i18n/localize";
 
 export function ProjectCard({
   project,
@@ -12,6 +14,9 @@ export function ProjectCard({
   className?: string;
   imageClassName?: string;
 }) {
+  const { language } = useLanguage();
+  const localized = localizeProject(project, language);
+
   return (
     <Link href={`/projects/${project.id}`}>
       <motion.div
@@ -29,7 +34,7 @@ export function ProjectCard({
         >
           <img
             src={cloudinaryImage(project.coverImage, 900)}
-            alt={project.title}
+            alt={localized.title}
             loading="lazy"
             decoding="async"
             className="absolute inset-0 object-cover w-full h-full transition-transform duration-700 ease-out group-hover:scale-105"
@@ -40,12 +45,12 @@ export function ProjectCard({
           <div className="absolute bottom-0 left-0 h-1 bg-primary w-0 group-hover:w-full transition-all duration-500 ease-out" />
 
           <div className="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 text-xs font-bold uppercase tracking-widest text-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0">
-            {project.category}
+            {localizeCategory(project.category, language)}
           </div>
         </div>
 
         <h3 className="text-xl font-display font-medium text-foreground group-hover:text-primary transition-colors duration-300">
-          {project.title}
+          {localized.title}
         </h3>
         <p className="text-muted-foreground text-sm mt-1">{project.location} — {project.year}</p>
       </motion.div>

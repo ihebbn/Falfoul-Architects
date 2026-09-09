@@ -1,11 +1,13 @@
 import { useState } from "react";
+import { useLanguage } from "@/i18n/language-context";
 import {
-  contactFormSchema,
+  createContactFormSchema,
   type ContactFormValues,
 } from "@/lib/contact-form";
 
 export function useContactMutation() {
   const [isPending, setIsPending] = useState(false);
+  const { t } = useLanguage();
 
   return {
     isPending,
@@ -18,7 +20,7 @@ export function useContactMutation() {
     ) => {
       try {
         setIsPending(true);
-        const validated = contactFormSchema.parse(data);
+        const validated = createContactFormSchema(t).parse(data);
 
         if (import.meta.env.DEV) {
           await new Promise((resolve) => window.setTimeout(resolve, 300));
@@ -40,13 +42,13 @@ export function useContactMutation() {
         });
 
         if (!res.ok) {
-          throw new Error("Impossible d'envoyer le message pour le moment.");
+          throw new Error(t("contact.sendFailed"));
         }
 
         options?.onSuccess?.();
       } catch (error) {
         options?.onError?.(
-          error instanceof Error ? error : new Error("Une erreur est survenue.")
+          error instanceof Error ? error : new Error(t("contact.genericError"))
         );
       } finally {
         setIsPending(false);
