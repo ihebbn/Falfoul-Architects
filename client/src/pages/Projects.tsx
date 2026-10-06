@@ -1,6 +1,7 @@
 import { useProjects } from "@/hooks/use-projects";
-import { PROJECT_CATEGORIES } from "@/data/site-data";
+import { PROJECT_CATEGORIES, SITE_VIDEOS } from "@/data/site-data";
 import { ProjectCard } from "@/components/ProjectCard";
+import { VideoCard } from "@/components/VideoCard";
 import { useLanguage } from "@/i18n/language-context";
 import { localizeCategory } from "@/i18n/localize";
 import { useState } from "react";
@@ -25,7 +26,8 @@ export default function Projects() {
   const { t, language } = useLanguage();
   const [activeCategory, setActiveCategory] = useState("TOUS");
 
-  const filteredProjects = projects?.filter(p => 
+  const isVideosCategory = activeCategory === "Videos";
+  const filteredProjects = projects?.filter(p =>
     activeCategory === "TOUS" ? true : p.category === activeCategory
   );
 
@@ -64,7 +66,28 @@ export default function Projects() {
 
         {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-x-12 md:gap-y-16">
-          {isLoading ? (
+          {isVideosCategory ? (
+            SITE_VIDEOS.length === 0 ? (
+              <p className="col-span-full text-center text-muted-foreground font-['Montserrat'] text-sm py-16">
+                {language === "en" ? "Videos coming soon." : "Vidéos à venir."}
+              </p>
+            ) : (
+              <AnimatePresence mode="popLayout">
+                {SITE_VIDEOS.map((video) => (
+                  <motion.div
+                    key={video.id}
+                    layout
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <VideoCard video={video} />
+                  </motion.div>
+                ))}
+              </AnimatePresence>
+            )
+          ) : isLoading ? (
             Array(6).fill(0).map((_, i) => (
               <div key={i} className={cn("bg-muted animate-pulse", getRowImageAspect(i))} />
             ))

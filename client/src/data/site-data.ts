@@ -32,6 +32,14 @@ export type Event = {
   createdAt: Date;
 };
 
+export type SiteVideo = {
+  id: number;
+  title: string;
+  titleEn?: string | null;
+  url: string;
+  poster?: string | null;
+};
+
 export const HERO_VIDEO_URL =
   "https://res.cloudinary.com/dxpsm36t3/video/upload/v1788176671/video_ouverture_final_ojwq0s.mp4";
 
@@ -43,7 +51,36 @@ export const PROJECT_CATEGORIES = [
   "Residentiel bureautique",
   "touristique",
   "Villa",
+  "Videos",
 ] as const;
+
+/** Homepage / Projects “Videos” filter — paste Cloudinary (or other) URLs here. */
+export const SITE_VIDEOS: SiteVideo[] = [
+  {
+    id: 1,
+    title: "Villa Hosni",
+    titleEn: "Villa Hosni",
+    url: "https://res.cloudinary.com/dxpsm36t3/video/upload/v1791238683/Villa_Hosni_zyt95e.mp4",
+  },
+  {
+    id: 2,
+    title: "Video piscine",
+    titleEn: "Pool video",
+    url: "https://res.cloudinary.com/dxpsm36t3/video/upload/v1791239309/video_piscine_finale_r5zigj.mp4",
+  },
+  {
+    id: 3,
+    title: "Souk Mwejil",
+    titleEn: "Souk Mwejil",
+    url: "https://res.cloudinary.com/dxpsm36t3/video/upload/v1791239684/Souk_Mwejil_lnq5l8.mp4",
+  },
+  {
+    id: 4,
+    title: "Complexe Sportif JSK",
+    titleEn: "JSK Sports Complex",
+    url: "https://res.cloudinary.com/dxpsm36t3/video/upload/v1791250363/Rendu_video_final_1_v0ycuu.mp4",
+  },
+];
 
 export const PROJECTS: Project[] = [
     {
@@ -84,14 +121,14 @@ export const PROJECTS: Project[] = [
   },
     {
     id: 2,
-    title: "Villa M",
+    title: "Villa Nadine",
     titleEn: null,
-    category: "RESID.",
+    category: "Villa",
     surface: "320 m\u00B2 (R+1)",
     landSurface: "420 m\u00B2",
     coveredSurface: "320 m\u00B2 (R+1)",
     year: 2022,
-    status: "\u00C9tudes",
+    status: "R\u00E9alis\u00E9e",
     location: "Kairouan",
     client: "Private",
     architects: "FALFOUL Architecture",
@@ -125,22 +162,18 @@ export const PROJECTS: Project[] = [
     surface: "580 m\u00B2 (R+4)",
     coveredSurface: "580 m\u00B2 (R+4)",
     year: 2024,
-    status: "Etudes",
+    status: "En cours de construction",
     location: "Kairouan",
     client: "Private",
     architects: "FALFOUL Architecture",
     description:
-      "Ce projet d\u00E9veloppe une identit\u00E9 architecturale remarquable sur une surface couverte de 580 m\u00B2, mat\u00E9rialisant une transition harmonieuse entre codes classiques r\u00E9gionaux et minimalisme de standing.\n\nVolum\u00E9trie et Fa\u00E7ades Urbaines\nL'expression ext\u00E9rieure de l'\u00E9difice s'articule autour d'un traitement g\u00E9om\u00E9trique rigoureux et lumineux. La fa\u00E7ade principale se distingue par de monumentales arcades en plein cintre s'\u00E9tirant sur la hauteur des niveaux sup\u00E9rieurs, habill\u00E9es d'un parement en pierre claire textur\u00E9e au veinage horizontal affirm\u00E9. Le socle pi\u00E9ton s'ouvre g\u00E9n\u00E9reusement sur l'espace public par une succession d'arches vitr\u00E9es et de larges baies structurelles, offrant une transparence totale sur les espaces d'accueil. Des mod\u00E9natures sombres en serrurerie fine dessinent la trame des vitrages, tandis qu'une section en moucharabieh m\u00E9tallique graphique apporte une vibration texturale subtile \u00E0 l'enveloppe \u00E9pur\u00E9e.\n\nAmbiances et Am\u00E9nagements Int\u00E9rieurs\n\u00C0 l'int\u00E9rieur, les volumes se d\u00E9ploient avec th\u00E9\u00E2tralit\u00E9, privil\u00E9giant des mat\u00E9riaux nobles et des perspectives amples. Le Grand Hall magistral, structur\u00E9 en double hauteur, s'organise sous un lustre sculptural contemporain en cascade. Le sol en marbre brillant d\u00E9ploie un calepinage g\u00E9om\u00E9trique complexe qui guide le visiteur vers un comptoir de r\u00E9ception monolithique en marbre blanc cannel\u00E9, rehauss\u00E9 de touches de laiton bross\u00E9. Le projet int\u00E8gre de vastes salles de r\u00E9union et de conf\u00E9rence \u00E0 l'acoustique soign\u00E9e, caract\u00E9ris\u00E9es par des plafonds techniques rythm\u00E9s (\u00E0 caissons lumineux ou en vagues suspendues), de grands vitrages en arche et des habillages muraux chaleureux en tasseaux de bois verticaux ou boiseries sombres.\n\nL'H\u00F4tel de Kairouan revisite l'h\u00E9ritage de l'arche classique \u00E0 travers un prisme contemporain et \u00E9pur\u00E9, o\u00F9 la noblesse de la pierre, du marbre et du bois compose un lieu de s\u00E9jour d'une sophistication intemporelle.",
+      "Ce projet d\u00E9veloppe une identit\u00E9 architecturale remarquable sur une surface couverte de 580 m\u00B2, mat\u00E9rialisant une transition harmonieuse entre codes classiques r\u00E9gionaux et minimalisme de standing.\n\nVolum\u00E9trie et Fa\u00E7ades Urbaines\nL'expression ext\u00E9rieure de l'\u00E9difice s'articule autour d'un traitement g\u00E9om\u00E9trique rigoureux et lumineux. La fa\u00E7ade principale se distingue par de monumentales arcades en plein cintre s'\u00E9tirant sur la hauteur des niveaux sup\u00E9rieurs, habill\u00E9es d'un parement en pierre claire textur\u00E9e au veinage horizontal affirm\u00E9. Le socle pi\u00E9ton s'ouvre g\u00E9n\u00E9reusement sur l'espace public par une succession d'arches vitr\u00E9es et de larges baies structurelles, offrant une transparence totale sur les espaces d'accueil. Des mod\u00E9natures sombres en serrurerie fine dessinent la trame des vitrages, tandis qu'une section en moucharabieh m\u00E9tallique graphique apporte une vibration texturale subtile \u00E0 l'enveloppe \u00E9pur\u00E9e.\n\nL'H\u00F4tel de Kairouan revisite l'h\u00E9ritage de l'arche classique \u00E0 travers un prisme contemporain et \u00E9pur\u00E9, o\u00F9 la noblesse de la pierre compose un lieu d'une sophistication intemporelle.",
     descriptionEn: null,
     coverImage:
       "https://res.cloudinary.com/dxpsm36t3/image/upload/v1782566909/rendu_1_czeev5.webp",
     images: [
       "https://res.cloudinary.com/dxpsm36t3/image/upload/v1782566909/rendu_1_czeev5.webp",
       "https://res.cloudinary.com/dxpsm36t3/image/upload/v1782566903/rendu_2_z3e573.webp",
-      "https://res.cloudinary.com/dxpsm36t3/image/upload/v1782566903/rendu_4_fg8bjx.webp",
-      "https://res.cloudinary.com/dxpsm36t3/image/upload/v1782566904/rendu_5_lbkxp2.webp",
-      "https://res.cloudinary.com/dxpsm36t3/image/upload/v1782566904/rendu_6_zhlh6r.webp",
-      "https://res.cloudinary.com/dxpsm36t3/image/upload/v1782566903/rendu3_nc0upx.webp",
     ],
     distinctions: [],
     isFeatured: false,
@@ -184,7 +217,7 @@ export const PROJECTS: Project[] = [
     id: 5,
     title: "Villa HZ",
     titleEn: null,
-    category: "RESID.",
+    category: "Villa",
     surface: "560 m\u00B2 (R+1)",
     landSurface: "450 m\u00B2",
     coveredSurface: "560 m\u00B2 (R+1)",
@@ -288,7 +321,7 @@ export const PROJECTS: Project[] = [
     id: 9,
     title: "Villa Mykonos",
     titleEn: null,
-    category: "RESID.",
+    category: "Villa",
     surface: "170 m\u00B2",
     landSurface: "410 m\u00B2",
     coveredSurface: "170 m\u00B2",
@@ -401,15 +434,15 @@ export const PROJECTS: Project[] = [
   },
   {
     id: 13,
-    title: "Centre d'art dramatique",
+    title: "Centre dramatique de Siliana",
     titleEn: null,
     category: "Concours et batiments civils",
     surface: "2500 m\u00B2",
     coveredSurface: "2500 m\u00B2",
-    year: 2019,
-    status: "3\u00E8me prix",
+    year: 2020,
+    status: "Concours national d'architecture (non class\u00E9)",
     location: "Siliana, Tunisie",
-    client: null,
+    client: "Minist\u00E8re des Affaires Culturelles",
     architects: "FALFOUL Architecture",
     description:
       "Une Spatialit\u00E9 Fluide et Structur\u00E9e\nLe b\u00E2timent s'impose par une dualit\u00E9 volum\u00E9trique remarquable : un imposant corps cylindrique \u00E0 arcades s'articule harmonieusement avec des volumes cubiques \u00E9pur\u00E9s, abritant la salle de spectacle. V\u00E9ritable c\u0153ur battant du projet, le grand hall d'entr\u00E9e et le foyer distribuent de mani\u00E8re claire et rationnelle les espaces de formation, les zones d'exposition et la grande salle. L'int\u00E9gration de vastes ouvertures en plein cintre et de fa\u00E7ades vitr\u00E9es rompt avec la rigidit\u00E9 traditionnelle des \u00E9difices administratifs, inondant les int\u00E9rieurs d'une lumi\u00E8re naturelle g\u00E9n\u00E9reuse tout en symbolisant la transparence de l'institution vers l'espace public.\n\nAncrage Contextuel et Mat\u00E9rialit\u00E9 Noble\nL'enveloppe ext\u00E9rieure, caract\u00E9ris\u00E9e par des tons blancs et sable clairs, s'harmonise parfaitement avec le climat et le paysage tunisien. Le design ext\u00E9rieur est grandement dynamis\u00E9 par des rev\u00Eatements textur\u00E9s en pierre locale, habillant les porches monumentaux et les structures porteuses pour ancrer le projet dans son terroir, et des moucharabiehs dor\u00E9s et cisel\u00E9s, qui coiffent le volume circulaire et les hauteurs de la cage de sc\u00E8ne, filtrant d\u00E9licatement la lumi\u00E8re tout en rendant hommage au patrimoine artisanal.\n\nUn Programme Int\u00E9gr\u00E9 et Vivant\n\u00C0 l'ext\u00E9rieur comme \u00E0 l'int\u00E9rieur, le parcours de l'usager a \u00E9t\u00E9 con\u00E7u pour encourager la rencontre et l'expression artistique. Un patio paysager central en demi-lune, agr\u00E9ment\u00E9 d'une fontaine et d'une v\u00E9g\u00E9tation luxuriante, offre un espace de respiration et de fra\u00EEcheur propice \u00E0 la d\u00E9tente des artistes et des visiteurs. Un terrain de sport polyvalent, int\u00E9gr\u00E9 \u00E0 l'arri\u00E8re de la parcelle, renforce la vocation inclusive et dynamique du centre aupr\u00E8s de la jeunesse.\n\nCette r\u00E9alisation signe une architecture publique engag\u00E9e, durable et accueillante, qui dote la ville de Siliana d'un rep\u00E8re visuel, culturel et civique incontournable.",
@@ -426,7 +459,7 @@ export const PROJECTS: Project[] = [
     ],
     distinctions: [],
     isFeatured: true,
-    createdAt: new Date("2019-01-01T00:00:00Z"),
+    createdAt: new Date("2020-01-01T00:00:00Z"),
   },
   {
     id: 19,
@@ -513,7 +546,7 @@ export const PROJECTS: Project[] = [
     year: 2017,
     status: "3\u00E8me prix",
     location: "Cherarda, Kairouan, Tunisie",
-    client: null,
+    client: "Minist\u00E8re des Finances",
     architects: "FALFOUL Architecture",
     description:
       "Ce projet architectural s'implante de mani\u00E8re hautement strat\u00E9gique \u00E0 Cherarda, orientant son b\u00E2timent principal vers la GP2, voie majeure reliant Kairouan \u00E0 Gab\u00E8s. Le parti adopt\u00E9 propose un dialogue harmonieux entre fonctionnalit\u00E9 et sobri\u00E9t\u00E9 en articulant deux volumes en R+1 inscrits dans des formes g\u00E9om\u00E9triques pures (cercle, rectangle et triangle). En premier plan, le volume administratif accueille la recette des finances au rez-de-chauss\u00E9e et le bureau de contr\u00F4le \u00E0 l'\u00E9tage, affirmant son r\u00F4le institutionnel par des acc\u00E8s publics clairement signal\u00E9s depuis la voie principale. En retrait, le second volume abrite les logements de fonction (r\u00E9serv\u00E9s au receveur au rez-de-chauss\u00E9e et au chef de bureau \u00E0 l'\u00E9tage), desservis par deux parkings distincts. Ces acc\u00E8s privatifs sont ing\u00E9nieusement dispos\u00E9s de fa\u00E7on oppos\u00E9e pour garantir l'intimit\u00E9 et \u00E9viter tout vis-\u00E0-vis. Esth\u00E9tiquement, le traitement des fa\u00E7ades allie un vocabulaire contemporain \u00E9pur\u00E9 \u00E0 l'utilisation de la brique traditionnelle kairouanaise, sublim\u00E9 par de grands moucharabiehs blancs cisel\u00E9s et des pans vitr\u00E9s qui inondent de lumi\u00E8re le bureau des relations avec les citoyens, cr\u00E9ant ainsi un \u00E9quipement public \u00E0 la fois moderne, s\u00E9curis\u00E9 et ancr\u00E9 dans son patrimoine local.",
@@ -539,10 +572,10 @@ export const PROJECTS: Project[] = [
     category: "Concours et batiments civils",
     surface: "900 m\u00B2",
     coveredSurface: "900 m\u00B2",
-    year: 2024,
-    status: "Etudes",
+    year: 2019,
+    status: "1er prix",
     location: "Kairouan, Tunisie",
-    client: null,
+    client: 'Association "We Love Kairouan"',
     architects: "FALFOUL Architecture",
     description:
       "Le Projet de R\u00E9habilitation du Souk El Mouajil de Kairouan s'attache \u00E0 redonner vie \u00E0 un ancien espace historique de production et de vente artisanale, autrefois d\u00E9laiss\u00E9 et alt\u00E9r\u00E9 par le temps. L'intervention repose sur une alliance minutieuse entre restauration patrimoniale et am\u00E9nagement contemporain pour m\u00E9tamorphoser ce lieu en un p\u00F4le \u00E9conomique, culturel et touristique dynamique.\n\nRestauration Technique et Identit\u00E9 Architecturale\nL'approche architecturale privil\u00E9gie la pr\u00E9servation de la morphologie et de l'authenticit\u00E9 structurelle de l'\u00E9difice tout en y int\u00E9grant des technologies modernes. Une r\u00E9fection fid\u00E8le des vo\u00FBtes et des structures en briques met en valeur la texture originelle de la brique de Kairouan tout en consolidant l'ensemble de la nef couverte. L'optimisation de la lumi\u00E8re naturelle est assur\u00E9e par l'ouverture d'oculus et de lanterneaux z\u00E9nithaux perc\u00E9s dans les vo\u00FBtes, qui diffusent une clart\u00E9 douce et limitent le recours \u00E0 l'\u00E9clairage artificiel en journ\u00E9e. L'int\u00E9gration technique \u00E9coresponsable se caract\u00E9rise par l'installation discr\u00E8te de solutions d'assainissement modernes et de panneaux photovolta\u00EFques dispos\u00E9s sur les toits plats ext\u00E9rieurs pour assurer l'autonomie \u00E9nerg\u00E9tique du site.\n\nAm\u00E9nagement Int\u00E9rieur et Nouveaux Usages\nEnti\u00E8rement repens\u00E9, l'espace int\u00E9rieur se structure comme un parcours fluide c\u00E9l\u00E9brant le savoir-faire local. Des boutiques d'artisanat revisit\u00E9 et des ateliers, rythm\u00E9s par de grandes ouvertures vitr\u00E9es minimalistes qui s'ins\u00E8rent harmonieusement sous les arcades historiques, c\u00F4toient un caf\u00E9 traditionnel et des zones de convivialit\u00E9, am\u00E9nag\u00E9s avec du mobilier bas et des banquettes int\u00E9gr\u00E9es, cr\u00E9ant des espaces de rencontre professionnels et de d\u00E9tente pour les visiteurs. Une galerie d'art et des espaces d'exposition combinent le charme des rev\u00EAtements de sol en pav\u00E9s de pierre d'origine \u00E0 une sc\u00E9nographie contemporaine \u00E9pur\u00E9e, id\u00E9ale pour valoriser les cr\u00E9ations de la r\u00E9gion.",
@@ -559,9 +592,9 @@ export const PROJECTS: Project[] = [
       "https://res.cloudinary.com/dxpsm36t3/image/upload/v1784638556/07_auhlfv.webp",
       "https://res.cloudinary.com/dxpsm36t3/image/upload/v1784638555/08_ytx9zr.webp",
     ],
-    distinctions: [],
+    distinctions: ["1er prix"],
     isFeatured: true,
-    createdAt: new Date("2024-01-01T00:00:00Z"),
+    createdAt: new Date("2019-01-01T00:00:00Z"),
   },
   {
     id: 18,
@@ -609,7 +642,7 @@ export const PROJECTS: Project[] = [
     year: 2026,
     status: "Etudes",
     location: "Kairouan, Tunisie",
-    client: null,
+    client: "Minist\u00E8re de l'\u00C9ducation",
     architects: "Aymen FALFOUL & Zeineb SOLTANE",
     description:
       "Ce projet scolaire, d\u00E9velopp\u00E9 sur deux niveaux (R+1), propose une r\u00E9interpr\u00E9tation contemporaine de l'architecture locale. Le b\u00E2timent se fragmente en plusieurs volumes distincts qui s'articulent autour de cours et de patios centraux.\n\nArchitecture Bioclimatique et Espaces de Vie\nL'organisation spatiale met l'accent sur le confort thermique et la qualit\u00E9 de vie des usagers. Des patios et cours int\u00E9rieures, pens\u00E9s comme de v\u00E9ritables poumons verts, int\u00E8grent la v\u00E9g\u00E9tation pour cr\u00E9er un microclimat favorable. Un syst\u00E8me de r\u00E9gulation naturelle garantit un rafra\u00EEchissement passif, une ventilation optimale et un apport g\u00E9n\u00E9reux en lumi\u00E8re naturelle au sein des circulations et des salles. Une grande cour pav\u00E9e centrale fait office de c\u0153ur fonctionnel de l'\u00E9tablissement, favorisant les rassemblements et la coh\u00E9sion au grand air.\n\nEnveloppe Ext\u00E9rieure et Engagement Environnemental\nLa conception des fa\u00E7ades allie performance technique, esth\u00E9tique ludique et insertion urbaine. Une volum\u00E9trie fragment\u00E9e en tons clairs, caract\u00E9ris\u00E9e par des fa\u00E7ades \u00E9pur\u00E9es, adoucit l'impact visuel du b\u00E2timent dans son tissu environnant. Des ouvertures dynamis\u00E9es par des touches de couleurs vives participent \u00E0 l'identit\u00E9 joyeuse de l'\u00E9cole tout en structurant le rythme des fa\u00E7ades. La d\u00E9marche \u00E9cologiquement responsable et inclusive offre un parcours fluide, enti\u00E8rement s\u00E9curis\u00E9 et accessible \u00E0 tous les \u00E9l\u00E8ves pour un cadre d'apprentissage p\u00E9renne.",
@@ -711,7 +744,7 @@ export const PROJECTS: Project[] = [
     year: 2026,
     status: "Concours d'id\u00E9es",
     location: "RN2, Kairouan, Tunisie",
-    client: null,
+    client: "Gouvernorat de Kairouan",
     architects: "FALFOUL Architecture",
     description:
       "Fruit d'une r\u00E9flexion urbanistique approfondie, le projet de restructuration de la ceinture p\u00E9riph\u00E9rique de Kairouan propose une r\u00E9interpr\u00E9tation contemporaine, ordonn\u00E9e et humaine de l'espace public et du commerce local. D\u00E9ploy\u00E9 de mani\u00E8re lin\u00E9aire le long d'un axe strat\u00E9gique, ce projet civique a \u00E9t\u00E9 pens\u00E9 pour incarner les valeurs de transparence, d'accessibilit\u00E9 et de service public tout en luttant contre le d\u00E9veloppement anarchique au sein de la communaut\u00E9.\n\nUne Spatialit\u00E9 Ouverte et Lumineuse\nL'am\u00E9nagement s'impose par une trame g\u00E9om\u00E9trique \u00E9pur\u00E9e qui s'articule autour d'une grande place centrale partag\u00E9e. V\u00E9ritable c\u0153ur battant du projet, cet espace d'accueil et d'\u00E9change citoyen distribue les diff\u00E9rents modules commerciaux de mani\u00E8re claire et rationnelle. L'int\u00E9gration de structures l\u00E9g\u00E8res et de vastes pergolas contemporaines rompt avec la rigidit\u00E9 traditionnelle des alignements routiers, inondant les espaces partag\u00E9s d'une lumi\u00E8re naturelle filtr\u00E9e tout en symbolisant l'ouverture de l'institution vers l'espace public.\n\nAncrage Contextuel et Mat\u00E9rialit\u00E9 Noble\nL'enveloppe ext\u00E9rieure des kiosques, caract\u00E9ris\u00E9e par des tons sable et bois clairs, s'harmonise parfaitement avec le climat et le paysage kairouanais. Le design urbain est dynamis\u00E9 par des rev\u00Eatements textur\u00E9s, des structures m\u00E9talliques sombres et \u00E9l\u00E9gantes, ainsi que des claustras en bois aux motifs g\u00E9om\u00E9triques qui soulignent la rigueur et la modernit\u00E9 des lignes tout en pr\u00E9servant une touche traditionnelle. \u00C0 l'int\u00E9rieur des zones d'intervention et le long des parcours, l'exp\u00E9rience usager est sublim\u00E9e par l'utilisation de mat\u00E9riaux nobles et p\u00E9rennes : le pav\u00E9 de pierre au sol conf\u00E8re au lieu sa solennit\u00E9 et sa durabilit\u00E9 face \u00E0 une forte fr\u00E9quentation pi\u00E9tonne, tandis que le bois chaleureux des guichets de vente et des terrasses des caf\u00E9s adoucit l'atmosph\u00E8re, offrant un environnement d'\u00E9coute et de convivialit\u00E9 \u00E0 la fois serein et ergonomique.\n\nUn Programme Public et Inclusif\nPens\u00E9 pour toutes les g\u00E9n\u00E9rations, le site int\u00E8gre des espaces de vie essentiels qui enrichissent le parcours citoyen. Une aire de jeux paysag\u00E8re et s\u00E9curis\u00E9e offre aux familles un espace de d\u00E9tente et de convivialit\u00E9 au milieu de zones engazonn\u00E9es. Un pavillon de services et sanitaires publics garantit le confort et l'hygi\u00E8ne indispensables \u00E0 la viabilit\u00E9 de ce p\u00F4le d'attraction.\n\nCette r\u00E9alisation signe une architecture publique engag\u00E9e, durable et accueillante, qui dote la municipalit\u00E9 d'un rep\u00E8re visuel et civique incontournable.",
@@ -742,7 +775,7 @@ export const PROJECTS: Project[] = [
   },
   {
     id: 23,
-    title: "Boudochim",
+    title: "Bodochim",
     titleEn: null,
     category: "Industriel",
     surface: "2400 m\u00B2 (Rdc)",
@@ -751,10 +784,10 @@ export const PROJECTS: Project[] = [
     year: 2026,
     status: "Etudes",
     location: "Kairouan, Tunisie",
-    client: "BODOCHIM",
+    client: "Bodochim",
     architects: "FALFOUL Architecture",
     description:
-      "Ce projet industriel de nouvelle g\u00E9n\u00E9ration se veut une v\u00E9ritable r\u00E9ponse architecturale aux exigences de production contemporaines, dotant la soci\u00E9t\u00E9 BODOCHIM d'un complexe logistique et tertiaire \u00E0 la fois rationnel et moderne. D\u00E8s l'abord du site, le projet d\u00E9voile une dualit\u00E9 fonctionnelle lisible, marqu\u00E9e par un volume administratif aux fa\u00E7ades immacul\u00E9es favorisant la lumi\u00E8re naturelle, subtilement contrast\u00E9 par un bardage m\u00E9tallique gris sombre et un totem d'entr\u00E9e textur\u00E9. Pens\u00E9 comme un outil de travail performant r\u00E9pondant \u00E0 des flux logistiques intenses, le complexe d\u00E9ploie en arri\u00E8re-plan de vastes halles industrielles \u00E0 toiture classique \u00E9quip\u00E9es de multiples portes sectionnelles adapt\u00E9es aux gabarits des poids lourds. Au c\u0153ur de cette organisation rigoureuse, pens\u00E9e pour optimiser les man\u0153uvres de chargement et le transit des conteneurs, s'int\u00E8grent des am\u00E9nagements ext\u00E9rieurs fonctionnels adoucis par la pr\u00E9sence de palmiers offrant un accueil paysager qualitatif. Cet ensemble, ceintur\u00E9 par un mur de protection p\u00E9riph\u00E9rique dot\u00E9 d'un large portail coulissant pour une gestion s\u00E9curis\u00E9e des acc\u00E8s, constitue un v\u00E9ritable p\u00F4le d'activit\u00E9 structurant, traduisant la volont\u00E9 de l'entreprise d'allier haute performance industrielle et image de marque p\u00E9renne.",
+      "Ce projet industriel de nouvelle g\u00E9n\u00E9ration se veut une v\u00E9ritable r\u00E9ponse architecturale aux exigences de production contemporaines, dotant la soci\u00E9t\u00E9 Bodochim d'un complexe logistique et tertiaire \u00E0 la fois rationnel et moderne. D\u00E8s l'abord du site, le projet d\u00E9voile une dualit\u00E9 fonctionnelle lisible, marqu\u00E9e par un volume administratif aux fa\u00E7ades immacul\u00E9es favorisant la lumi\u00E8re naturelle, subtilement contrast\u00E9 par un bardage m\u00E9tallique gris sombre et un totem d'entr\u00E9e textur\u00E9. Pens\u00E9 comme un outil de travail performant r\u00E9pondant \u00E0 des flux logistiques intenses, le complexe d\u00E9ploie en arri\u00E8re-plan de vastes halles industrielles \u00E0 toiture classique \u00E9quip\u00E9es de multiples portes sectionnelles adapt\u00E9es aux gabarits des poids lourds. Au c\u0153ur de cette organisation rigoureuse, pens\u00E9e pour optimiser les man\u0153uvres de chargement et le transit des conteneurs, s'int\u00E8grent des am\u00E9nagements ext\u00E9rieurs fonctionnels adoucis par la pr\u00E9sence de palmiers offrant un accueil paysager qualitatif. Cet ensemble, ceintur\u00E9 par un mur de protection p\u00E9riph\u00E9rique dot\u00E9 d'un large portail coulissant pour une gestion s\u00E9curis\u00E9e des acc\u00E8s, constitue un v\u00E9ritable p\u00F4le d'activit\u00E9 structurant, traduisant la volont\u00E9 de l'entreprise d'allier haute performance industrielle et image de marque p\u00E9renne.",
     descriptionEn: null,
     coverImage:
       "https://res.cloudinary.com/dxpsm36t3/image/upload/v1788123316/01_du7d7h.webp",
@@ -779,7 +812,7 @@ export const PROJECTS: Project[] = [
     status: "Etudes",
     location: "Zone industrielle Route de Tunis, Kairouan, Tunisie",
     client: null,
-    architects: "Groupement de 3 architectes (Conception & \u00C9tudes Co-sign\u00E9es)",
+    architects: "Aymen Falfoul, Nessim Dhahri et Ahlem Rebai",
     description:
       "Une Synergie Architecturale au Service de la Performance\nCe projet industriel contemporain est le fruit d'une collaboration \u00E9troite entre trois architectes, r\u00E9unis pour fusionner leurs expertises et formuler une r\u00E9ponse architecturale de haut niveau aux exigences de production actuelles. Au-del\u00E0 du d\u00E9fi manag\u00E9rial et technique de cette co-conception, notre groupement a relev\u00E9 un d\u00E9fi conceptuel majeur : concevoir un outil de travail ultra-performant, capable de s'adapter et de se reconfigurer imm\u00E9diatement pour accueillir n'importe quel type d'activit\u00E9 industrielle future.\n\nUne Identit\u00E9 Visuelle Forte et M\u00E9morable\nD\u00E8s l'abord du site, id\u00E9alement situ\u00E9 sur l'axe strat\u00E9gique de la Route de Tunis, le complexe d\u00E9voile une identit\u00E9 visuelle et g\u00E9om\u00E9trique affirm\u00E9e. Le design est marqu\u00E9 par un vaste bandeau horizontal jaune vif qui souligne le bloc administratif, contrastant avec la rigueur d'un bardage m\u00E9tallique nervur\u00E9 sombre en couronnement. Au c\u0153ur de cet am\u00E9nagement fonctionnel s'int\u00E8gre un jeu de volumes audacieux o\u00F9 cette casquette jaune se replie de mani\u00E8re sculpturale jusqu'au sol, cr\u00E9ant un rep\u00E8re visuel fort dans le paysage industriel kairouanais.\n\nInfrastructures Logistiques et Flexibilit\u00E9 des Flux\nPens\u00E9 pour r\u00E9pondre \u00E0 des flux d'exploitation intenses, l'espace offre des infrastructures logistiques compl\u00E8tes et fluides. L'acc\u00E8s principal est surmont\u00E9 d'un portique majestueux, avec un poste de garde rouge signal\u00E9tique pour la gestion des contr\u00F4les, et un large portail coulissant \u00E0 claire-voie. Une vaste cour de service arri\u00E8re, dimensionn\u00E9e pour les circulations de v\u00E9hicules utilitaires lourds, est \u00E9quip\u00E9e d'un quai de d\u00E9chargement sur\u00E9lev\u00E9.\n\nGr\u00E2ce \u00E0 sa trame structurelle optimis\u00E9e et sa modularit\u00E9 spatiale, cet ensemble cl\u00F4tur\u00E9 constitue un mod\u00E8le d'architecture industrielle p\u00E9renne, ergonomique et \u00E9volutive, pr\u00EAt \u00E0 accompagner le d\u00E9veloppement de n'importe quelle entreprise.",
     descriptionEn: null,

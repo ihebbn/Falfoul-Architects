@@ -20,8 +20,8 @@ export default function Contact() {
   const { t, language } = useLanguage();
   const tRef = useRef(t);
   tRef.current = t;
-  const officeAddress = "M36R+RGW, Kairouan";
-  const mapQuery = encodeURIComponent(`${officeAddress}, Tunisia`);
+  const officeAddress = t("footer.address");
+  const mapQuery = encodeURIComponent(officeAddress);
   const mapHref = `https://www.google.com/maps/search/?api=1&query=${mapQuery}`;
   const mapEmbedSrc = `https://www.google.com/maps?q=${mapQuery}&z=17&output=embed`;
 
@@ -96,8 +96,6 @@ export default function Contact() {
                   </h3>
                   <p className="text-[16px] text-foreground/85 leading-[1.75]">
                     {officeAddress}
-                    <br />
-                    {t("contact.country")}
                   </p>
                 </div>
               </div>
@@ -111,10 +109,10 @@ export default function Contact() {
                     {t("contact.email")}
                   </h3>
                   <a
-                    href="mailto:contact@falfoul-archi.com"
+                    href={`mailto:${t("footer.email")}`}
                     className="text-[16px] text-foreground/85 hover:text-primary transition-colors"
                   >
-                    contact@falfoul-archi.com
+                    {t("footer.email")}
                   </a>
                 </div>
               </div>
@@ -128,7 +126,12 @@ export default function Contact() {
                     {t("contact.phone")}
                   </h3>
                   <p className="text-[16px] text-foreground/85 leading-[1.75]">
-                    +216 71 123 456
+                    <a
+                      href="tel:+21623311064"
+                      className="transition-colors hover:text-primary"
+                    >
+                      {t("footer.phone")}
+                    </a>
                   </p>
                 </div>
               </div>

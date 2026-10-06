@@ -59,8 +59,22 @@ export function Footer() {
           <h3 className="text-xs font-medium uppercase tracking-[0.16em] text-primary">{t("footer.contact")}</h3>
           <ul className="mt-4 space-y-2 text-sm leading-relaxed text-white/65">
             <li>{t("footer.address")}</li>
-            <li>+216 71 123 456</li>
-            <li>contact@falfoul-archi.com</li>
+            <li>
+              <a
+                href="tel:+21623311064"
+                className="transition-colors hover:text-primary"
+              >
+                {t("footer.phone")}
+              </a>
+            </li>
+            <li>
+              <a
+                href={`mailto:${t("footer.email")}`}
+                className="transition-colors hover:text-primary"
+              >
+                {t("footer.email")}
+              </a>
+            </li>
           </ul>
         </div>
       </div>

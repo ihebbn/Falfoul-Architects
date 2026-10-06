@@ -10,11 +10,20 @@ export const translations = {
 
     "home.heroLine1": "Agence spécialisée en architecture contemporaine et design.",
     "home.heroLine2": "Créons ensemble des espaces qui respirent.",
-    "home.aboutTitle": "Histoire de FALFOUL Architecture",
+    "home.aboutTitle": "Falfoul Architecture",
+    "home.aboutSubtitle": "L'expérience en héritage, l'innovation en mouvement",
     "home.aboutP1":
-      "Fondée sur une vision de pureté structurelle, FALFOUL Architecture est née de la volonté de redéfinir le paysage urbain à travers le prisme de la modernité et de la durabilité. Notre histoire est celle d'une quête incessante de l'harmonie entre l'homme et son environnement.",
+      "Depuis 1984, « Falfoul Architecture » façonne des projets où se rencontrent exigence technique, sens du détail et compréhension profonde des attentes de chaque maître d'ouvrage. Fondé à Kairouan par « Samir Falfoul », le cabinet s'est construit au fil des décennies autour d'une valeur essentielle : la confiance. Une confiance née de l'écoute, nourrie par l'expérience et consolidée par un engagement constant sur le terrain.",
     "home.aboutP2":
-      "Depuis nos débuts, nous avons privilégié une approche minimaliste où chaque ligne, chaque matériau et chaque source de lumière naturelle est méticuleusement orchestré pour créer des espaces qui respirent et inspirent.",
+      "Au-delà des bâtiments réalisés, c'est avant tout une aventure humaine qui s'écrit depuis plus de quarante ans. Chaque projet, quelle que soit son échelle, est une histoire particulière, un dialogue entre des aspirations, un lieu et une vision. Cette approche, fondée sur la proximité et l'accompagnement, a permis au cabinet de bâtir une réputation solide et durable.",
+    "home.aboutP3":
+      "En 2015, l'arrivée de « Aymen Falfoul » a ouvert un nouveau chapitre. La rencontre de deux générations d'architectes a donné naissance à une synergie unique où l'expérience héritée du terrain dialogue naturellement avec les méthodes et les technologies les plus contemporaines. Entre mémoire et innovation, nous conjuguons la sagesse d'un savoir-faire éprouvé avec la créativité de nouvelles approches, de la modélisation avancée aux outils de conception les plus performants.",
+    "home.aboutP4":
+      "Aujourd'hui, père et fils portent ensemble une même vision de l'architecture : concevoir des espaces justes, durables et inspirants, capables de répondre aux usages d'aujourd'hui tout en s'inscrivant dans le temps. Deux regards, une même exigence. Deux générations, une même passion.",
+    "home.aboutP5":
+      "De la première esquisse au suivi rigoureux du chantier, nous accompagnons nos clients à chaque étape avec implication, transparence et attention. Parce que l'architecture ne consiste pas seulement à construire, mais à créer des lieux de vie, des espaces de partage et des repères durables, nous plaçons toujours l'humain au cœur de notre démarche.",
+    "home.aboutP6":
+      "« Falfoul Architecture », c'est l'alliance de la transmission et de l'innovation, de la rigueur et de la sensibilité, au service d'une architecture authentique, durable et profondément humaine.",
     "home.startProject": "Démarrer un projet",
     "home.recentProjects": "Projets Récents",
     "home.viewAll": "Voir tous les projets",
@@ -88,7 +97,9 @@ export const translations = {
     "footer.tagline":
       "Agence d'architecture contemporaine axée sur des espaces épurés, durables et intemporels.",
     "footer.contact": "Contact",
-    "footer.address": "123 Avenue Habib Bourguiba, 1000 Tunis, Tunisie",
+    "footer.address": "18 Rue Ibn Hanbel - El Mansoura -3131 Kairouan",
+    "footer.phone": "(+216) 23311064",
+    "footer.email": "architecturefalfoul@gmail.com",
     "footer.rights": "Tous droits réservés.",
 
     "notFound.title": "404 Page introuvable",
@@ -105,11 +116,20 @@ export const translations = {
 
     "home.heroLine1": "A studio dedicated to contemporary architecture and design.",
     "home.heroLine2": "Let’s create spaces that breathe, together.",
-    "home.aboutTitle": "The Story of FALFOUL Architecture",
+    "home.aboutTitle": "Falfoul Architecture",
+    "home.aboutSubtitle": "Experience as heritage, innovation in motion",
     "home.aboutP1":
-      "Founded on a vision of structural purity, FALFOUL Architecture was born from a desire to redefine the urban landscape through modernity and sustainability. Our story is a relentless pursuit of harmony between people and their environment.",
+      "Since 1984, “Falfoul Architecture” has shaped projects where technical rigor, attention to detail and a deep understanding of each client’s expectations come together. Founded in Kairouan by “Samir Falfoul”, the practice has been built over decades around an essential value: trust. Trust born of listening, nurtured by experience and strengthened by a constant presence on site.",
     "home.aboutP2":
-      "From the beginning, we have favoured a minimalist approach in which every line, every material and every source of natural light is carefully orchestrated to create spaces that breathe and inspire.",
+      "Beyond the buildings delivered, it is above all a human adventure that has been writing itself for more than forty years. Every project, whatever its scale, is a particular story — a dialogue between aspirations, a place and a vision. This approach, grounded in proximity and accompaniment, has allowed the practice to build a solid and lasting reputation.",
+    "home.aboutP3":
+      "In 2015, the arrival of “Aymen Falfoul” opened a new chapter. The meeting of two generations of architects gave rise to a unique synergy, where experience inherited from the field converses naturally with the most contemporary methods and technologies. Between memory and innovation, we combine the wisdom of proven craft with the creativity of new approaches, from advanced modeling to the most effective design tools.",
+    "home.aboutP4":
+      "Today, father and son share the same vision of architecture: to design fair, lasting and inspiring spaces, able to meet today’s uses while enduring through time. Two perspectives, one standard of excellence. Two generations, one passion.",
+    "home.aboutP5":
+      "From the first sketch to rigorous site supervision, we accompany our clients at every step with commitment, transparency and care. Because architecture is not only about building, but about creating places to live, spaces for gathering and lasting landmarks, we always place people at the heart of our approach.",
+    "home.aboutP6":
+      "“Falfoul Architecture” is the alliance of transmission and innovation, of rigor and sensitivity, in service of an architecture that is authentic, lasting and deeply human.",
     "home.startProject": "Start a project",
     "home.recentProjects": "Recent Projects",
     "home.viewAll": "View all projects",
@@ -181,7 +201,9 @@ export const translations = {
     "footer.tagline":
       "A contemporary architecture studio focused on refined, lasting and timeless spaces.",
     "footer.contact": "Contact",
-    "footer.address": "123 Avenue Habib Bourguiba, 1000 Tunis, Tunisia",
+    "footer.address": "18 rue Ibn Hanbel - El Mansoura -3131 Kairouan, Tunisia",
+    "footer.phone": "(+216) 23 311064",
+    "footer.email": "architecturefalfoul@gmail.com",
     "footer.rights": "All rights reserved.",
 
     "notFound.title": "404 Page not found",
@@ -201,6 +223,7 @@ export const CATEGORY_LABELS: Record<Language, Record<string, string>> = {
     "Residentiel bureautique": "Résidentiel bureautique",
     touristique: "Touristique",
     Villa: "Villa",
+    Videos: "Vidéos",
     "RESID.": "Résidentiel",
   },
   en: {
@@ -211,6 +234,7 @@ export const CATEGORY_LABELS: Record<Language, Record<string, string>> = {
     "Residentiel bureautique": "Residential & office",
     touristique: "Hospitality",
     Villa: "Villa",
+    Videos: "Videos",
     "RESID.": "Residential",
   },
 };
@@ -223,8 +247,17 @@ export const STATUS_LABELS: Record<string, Record<Language, string>> = {
   Etudes: { fr: "Études", en: "Studies" },
   "Non classé": { fr: "Non classé", en: "Unranked" },
   "3ème prix": { fr: "3ème prix", en: "3rd prize" },
+  "1er prix": { fr: "1er prix", en: "1st prize" },
   "Concours d'idées": { fr: "Concours d'idées", en: "Ideas competition" },
+  "Concours national d'architecture (non classé)": {
+    fr: "Concours national d'architecture (non classé)",
+    en: "National architecture competition (unranked)",
+  },
   "En cours": { fr: "En cours", en: "In progress" },
+  "En cours de construction": {
+    fr: "En cours de construction",
+    en: "Under construction",
+  },
 };
 
 export const CLIENT_LABELS: Record<string, Record<Language, string>> = {
@@ -236,6 +269,26 @@ export const CLIENT_LABELS: Record<string, Record<Language, string>> = {
     en: "Regional Equipment Directorate of Errachidia",
   },
   "Mosquee Sidi Guith": { fr: "Mosquée Sidi Guith", en: "Sidi Guith Mosque" },
+  "Ministère des Affaires Culturelles": {
+    fr: "Ministère des Affaires Culturelles",
+    en: "Ministry of Cultural Affairs",
+  },
+  "Ministère des Finances": {
+    fr: "Ministère des Finances",
+    en: "Ministry of Finance",
+  },
+  "Ministère de l'Éducation": {
+    fr: "Ministère de l'Éducation",
+    en: "Ministry of Education",
+  },
+  'Association "We Love Kairouan"': {
+    fr: 'Association "We Love Kairouan"',
+    en: '“We Love Kairouan” Association',
+  },
+  "Gouvernorat de Kairouan": {
+    fr: "Gouvernorat de Kairouan",
+    en: "Governorate of Kairouan",
+  },
   "Groupement de 3 architectes (Conception & Études Co-signées)": {
     fr: "Groupement de 3 architectes (Conception & Études Co-signées)",
     en: "Consortium of 3 architects (co-signed design & studies)",

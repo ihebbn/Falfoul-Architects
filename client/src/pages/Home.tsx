@@ -1,6 +1,7 @@
 import { useProjects } from "@/hooks/use-projects";
-import { HERO_VIDEO_URL, PROJECT_CATEGORIES } from "@/data/site-data";
+import { HERO_VIDEO_URL, PROJECT_CATEGORIES, SITE_VIDEOS } from "@/data/site-data";
 import { Button } from "@/components/ui/button";
+import { VideoCard } from "@/components/VideoCard";
 import { cloudinaryImage, cloudinaryVideo, cn } from "@/lib/utils";
 import { Link } from "wouter";
 import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
@@ -111,6 +112,7 @@ export default function Home() {
 
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const isVideosCategory = activeCategory === "Videos";
   const filteredProjects = projects?.filter((p) =>
     activeCategory === "TOUS" ? true : p.category === activeCategory
   );
@@ -219,19 +221,32 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.4 }}
             transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-            className="mx-auto max-w-[900px] text-[clamp(2.2rem,5.2vw,3.4rem)] font-medium tracking-[0.012em] text-foreground mb-10 md:mb-12 leading-[1.1]"
+            className="mx-auto max-w-[900px] text-[clamp(2.2rem,5.2vw,3.4rem)] font-medium tracking-[0.012em] text-foreground mb-4 md:mb-5 leading-[1.1]"
           >
             {t("home.aboutTitle")}
           </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ duration: 0.65, delay: 0.04, ease: [0.22, 1, 0.36, 1] }}
+            className="mx-auto mb-10 md:mb-12 max-w-[720px] text-[15px] md:text-[16px] font-medium tracking-[0.02em] text-foreground/70 italic"
+          >
+            {t("home.aboutSubtitle")}
+          </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.35 }}
+            viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.65, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-            className="mx-auto max-w-[680px] space-y-6 text-[16px] text-foreground/85 leading-[1.75]"
+            className="mx-auto max-w-[720px] space-y-5 md:space-y-6 text-[15px] md:text-[16px] text-foreground/85 leading-[1.75]"
           >
             <p>{t("home.aboutP1")}</p>
             <p>{t("home.aboutP2")}</p>
+            <p>{t("home.aboutP3")}</p>
+            <p>{t("home.aboutP4")}</p>
+            <p>{t("home.aboutP5")}</p>
+            <p>{t("home.aboutP6")}</p>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 12 }}
@@ -275,7 +290,30 @@ export default function Home() {
           </div>
 
           <div className="w-full">
-            {isLoading ? (
+            {isVideosCategory ? (
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key="videos"
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.35 }}
+                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5"
+                >
+                  {SITE_VIDEOS.length === 0 ? (
+                    <p className="col-span-full text-center text-muted-foreground font-['Montserrat'] text-sm py-16">
+                      {language === "en"
+                        ? "Videos coming soon."
+                        : "Vidéos à venir."}
+                    </p>
+                  ) : (
+                    SITE_VIDEOS.map((video) => (
+                      <VideoCard key={video.id} video={video} />
+                    ))
+                  )}
+                </motion.div>
+              </AnimatePresence>
+            ) : isLoading ? (
               <div className="columns-1 md:columns-2 lg:columns-3 gap-4 md:gap-5">
                 {Array(6).fill(0).map((_, i) => (
                   <div

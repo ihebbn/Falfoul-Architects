@@ -23,3 +23,13 @@ export function cloudinaryVideo(url: string, width = 1920): string {
   }
   return url.replace("/upload/", `/upload/f_auto,q_auto,w_${width},c_limit/`);
 }
+
+/** Still from a Cloudinary video (2s in — avoids blank opening frames). */
+export function cloudinaryVideoPoster(url: string, width = 1280): string {
+  if (!url.includes("res.cloudinary.com") || !url.includes("/upload/")) {
+    return url;
+  }
+  return url
+    .replace("/upload/", `/upload/so_2,w_${width},c_fill,f_jpg,q_auto/`)
+    .replace(/\.(mp4|webm|mov)(\?.*)?$/i, ".jpg$2");
+}
