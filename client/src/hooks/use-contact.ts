@@ -5,6 +5,9 @@ import {
   type ContactFormValues,
 } from "@/lib/contact-form";
 
+/** Inbox that receives contact form submissions. */
+export const CONTACT_INBOX_EMAIL = "architecturefalfoul@gmail.com";
+
 export function useContactMutation() {
   const [isPending, setIsPending] = useState(false);
   const { t } = useLanguage();
@@ -22,27 +25,41 @@ export function useContactMutation() {
         setIsPending(true);
         const validated = createContactFormSchema(t).parse(data);
 
-        if (import.meta.env.DEV) {
-          await new Promise((resolve) => window.setTimeout(resolve, 300));
-          options?.onSuccess?.();
-          return;
-        }
+        const res = await fetch(
+          `https://formsubmit.co/ajax/${CONTACT_INBOX_EMAIL}`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            body: JSON.stringify({
+              name: validated.name,
+              email: validated.email,
+              subject: validated.subject,
+              message: validated.message,
+              _replyto: validated.email,
+              _subject: `[Falfoul Architecture] ${validated.subject}`,
+              _template: "table",
+              _captcha: "false",
+              _honey: "",
+            }),
+          }
+        );
 
-        const body = new URLSearchParams({
-          "form-name": "contact",
-          ...validated,
-        }).toString();
+        const payload = (await res.json().catch(() => null)) as {
+          success?: string | boolean;
+          message?: string;
+        } | null;
 
-        const res = await fetch("/", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-          body,
-        });
+        const ok =
+          res.ok &&
+          (payload?.success === true ||
+            payload?.success === "true" ||
+            payload == null);
 
-        if (!res.ok) {
-          throw new Error(t("contact.sendFailed"));
+        if (!ok) {
+          throw new Error(payload?.message || t("contact.sendFailed"));
         }
 
         options?.onSuccess?.();

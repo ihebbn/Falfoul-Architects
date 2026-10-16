@@ -184,13 +184,10 @@ export default function Contact() {
             <form
               name="contact"
               method="POST"
-              data-netlify="true"
-              data-netlify-honeypot="bot-field"
               onSubmit={form.handleSubmit(onSubmit)}
               className="space-y-6"
+              noValidate
             >
-              <input type="hidden" name="form-name" value="contact" />
-              <input type="hidden" name="bot-field" />
 
               <div className="space-y-2">
                 <label className="text-[12px] md:text-[13px] font-medium uppercase tracking-[0.11em] text-muted-foreground">

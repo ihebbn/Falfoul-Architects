@@ -11,6 +11,9 @@ import { useLanguage } from "@/i18n/language-context";
 import { localizeCategory, localizeProject } from "@/i18n/localize";
 type CardVariant = "standard" | "medium" | "tall";
 
+/** Survives React remounts so the hero title never plays twice in one session. */
+let heroIntroPlayed = false;
+
 const CARD_VARIANT_CLASSES: Record<CardVariant, string> = {
   standard: "aspect-[4/3]",
   medium: "aspect-[6/5]",
@@ -102,7 +105,7 @@ export default function Home() {
   const { data: projects, isLoading } = useProjects();
   const { t, language } = useLanguage();
   const [activeCategory, setActiveCategory] = useState("TOUS");
-  const [showHeroIntro, setShowHeroIntro] = useState(true);
+  const [heroIntroMounted, setHeroIntroMounted] = useState(() => !heroIntroPlayed);
   const heroRef = useRef<HTMLDivElement>(null);
   const heroVideoRef = useRef<HTMLVideoElement>(null);
   const { scrollYProgress } = useScroll({
@@ -111,18 +114,13 @@ export default function Home() {
   });
 
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
   const isVideosCategory = activeCategory === "Videos";
   const filteredProjects = projects?.filter((p) =>
     activeCategory === "TOUS" ? true : p.category === activeCategory
   );
 
   useEffect(() => {
-    const timer = window.setTimeout(() => {
-      setShowHeroIntro(false);
-    }, 2400);
-
-    return () => window.clearTimeout(timer);
+    if (heroIntroPlayed) setHeroIntroMounted(false);
   }, []);
 
   useEffect(() => {
@@ -138,6 +136,11 @@ export default function Home() {
     document.addEventListener("visibilitychange", resumePlayback);
     return () => document.removeEventListener("visibilitychange", resumePlayback);
   }, []);
+
+  const finishHeroIntro = () => {
+    heroIntroPlayed = true;
+    setHeroIntroMounted(false);
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -162,38 +165,17 @@ export default function Home() {
           <div className="absolute inset-0 bg-black/35" />
         </motion.div>
 
-        <motion.div
-          style={{ opacity }}
-          className="relative z-10 text-center px-6 max-w-4xl mx-auto"
-        >
-          <AnimatePresence>
-            {showHeroIntro && (
-              <motion.div
-                key="hero-intro"
-                initial={{ opacity: 0, y: 28 }}
-                animate={{
-                  opacity: 1,
-                  y: 0,
-                  transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] },
-                }}
-                exit={{
-                  opacity: 0,
-                  transition: { duration: 1.1, ease: [0.4, 0, 0.2, 1] },
-                }}
-              >
-                <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-white tracking-tight">
-                  FALFOUL <br />
-                  <span className="text-primary font-light italic">Architecture</span>
-                </h1>
-                <p className="mt-6 text-lg md:text-xl text-white/90 max-w-2xl mx-auto font-light leading-relaxed">
-                  {t("home.heroLine1")}
-                  <br />
-                  {t("home.heroLine2")}
-                </p>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </motion.div>
+        {heroIntroMounted && (
+          <div className="absolute inset-0 z-10 flex items-center justify-center text-center px-6 pointer-events-none">
+            <h1
+              className="hero-intro-title text-5xl md:text-7xl lg:text-8xl font-display font-bold text-white tracking-tight"
+              onAnimationEnd={finishHeroIntro}
+            >
+              FALFOUL <br />
+              <span className="text-primary font-light italic">Architecture</span>
+            </h1>
+          </div>
+        )}
 
         <motion.div
           initial={{ opacity: 0 }}

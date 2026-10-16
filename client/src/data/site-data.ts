@@ -98,6 +98,36 @@ export const SITE_VIDEOS: SiteVideo[] = [
     titleEn: "Sidi Guith Mosque",
     url: "https://res.cloudinary.com/dxpsm36t3/video/upload/v1791255924/jemmaa33_nko0dy.mp4",
   },
+  {
+    id: 8,
+    title: "Rond-point Sobhanna Allah, Kairouan",
+    titleEn: "Sobhanna Allah Roundabout, Kairouan",
+    url: "https://res.cloudinary.com/dxpsm36t3/video/upload/v1792108556/0727_qkqe2i.mp4",
+  },
+  {
+    id: 9,
+    title: "Villa Nadine",
+    titleEn: "Villa Nadine",
+    url: "https://res.cloudinary.com/dxpsm36t3/video/upload/v1792109463/Falfoul_olqdyt.mov",
+  },
+  {
+    id: 10,
+    title: "Villa Nadine, Nuit",
+    titleEn: "Villa Nadine, Night",
+    url: "https://res.cloudinary.com/dxpsm36t3/video/upload/v1792109872/Falfoul_Nuit_nywaxh.mov",
+  },
+  {
+    id: 11,
+    title: "Hotel de Kairouan",
+    titleEn: "Kairouan Hotel",
+    url: "https://res.cloudinary.com/dxpsm36t3/video/upload/v1792110505/rendu_hotel_mizel-compressed_jrghvu.mp4",
+  },
+  {
+    id: 12,
+    title: "Municipalité de Chwayhiya",
+    titleEn: "Chwayhiya Municipality",
+    url: "https://res.cloudinary.com/dxpsm36t3/video/upload/v1792111773/Baladiya_Chwayhiya_1_mzzyim.mp4",
+  },
 ];
 
 export const PROJECTS: Project[] = [
@@ -1062,13 +1092,13 @@ export const PROJECTS: Project[] = [
       "Ce projet concerne la conception architecturale compl\u00E8te ainsi que le suivi des travaux de l'une des plus importantes installations industrielles du secteur agroalimentaire en Tunisie. Par son envergure et sa vocation industrielle, le projet repose sur une conception adapt\u00E9e aux exigences sp\u00E9cifiques des activit\u00E9s de production agroalimentaire et aux contraintes techniques associ\u00E9es \u00E0 ce type d'infrastructure.\n\nL'un des principaux enjeux techniques du projet r\u00E9side dans la conception d'une importante structure en ossature m\u00E9tallique, dimensionn\u00E9e pour permettre la r\u00E9alisation de grandes port\u00E9es et d\u00E9gager de vastes espaces n\u00E9cessaires au fonctionnement de l'unit\u00E9 industrielle. Cette configuration structurelle r\u00E9pond notamment aux besoins li\u00E9s \u00E0 l'int\u00E9gration des lignes de production automatis\u00E9es et \u00E0 l'organisation d'une activit\u00E9 logistique lourde au sein du complexe.\n\nLa conception de l'ensemble prend \u00E9galement en consid\u00E9ration les exigences sp\u00E9cifiques propres au secteur agroalimentaire, avec une application stricte des normes internationales ISO relatives \u00E0 l'hygi\u00E8ne, \u00E0 la s\u00E9curit\u00E9 et \u00E0 l'environnement. Ces exigences constituent un \u00E9l\u00E9ment essentiel du d\u00E9veloppement architectural et technique du projet.\n\n\u00C0 travers ces diff\u00E9rentes composantes, le projet associe ainsi conception architecturale, structures m\u00E9talliques de grande port\u00E9e, int\u00E9gration de lignes de production automatis\u00E9es et prise en charge des contraintes li\u00E9es aux flux logistiques lourds, tout en assurant le respect des standards internationaux ISO en mati\u00E8re d'hygi\u00E8ne, de s\u00E9curit\u00E9 et d'environnement.",
     descriptionEn: null,
     coverImage:
-      "https://res.cloudinary.com/dxpsm36t3/image/upload/v1791255797/5_saunrc.webp",
+      "https://res.cloudinary.com/dxpsm36t3/image/upload/v1792109959/Entrep%C3%B4t_moderne_et_cour_logistique_ensoleill%C3%A9e_ouj88r.png",
     images: [
-      "https://res.cloudinary.com/dxpsm36t3/image/upload/v1791255797/5_saunrc.webp",
-      "https://res.cloudinary.com/dxpsm36t3/image/upload/v1791255797/6_maxwie.webp",
-      "https://res.cloudinary.com/dxpsm36t3/image/upload/v1791255799/7_ucb0yp.webp",
-      "https://res.cloudinary.com/dxpsm36t3/image/upload/v1791255799/8_bl1ofc.webp",
-      "https://res.cloudinary.com/dxpsm36t3/image/upload/v1791255798/9_is2cng.webp",
+      "https://res.cloudinary.com/dxpsm36t3/image/upload/v1792109959/Entrep%C3%B4t_moderne_et_cour_logistique_ensoleill%C3%A9e_ouj88r.png",
+      "https://res.cloudinary.com/dxpsm36t3/image/upload/v1792109965/Complexe_industriel_moderne_sous_ciel_bleu_di7ucg.png",
+      "https://res.cloudinary.com/dxpsm36t3/image/upload/v1792110032/B%C3%A2timent_industriel_bleu_sous_ciel_clair_ffgb5j.png",
+      "https://res.cloudinary.com/dxpsm36t3/image/upload/v1792110047/Cour_industrielle_sous_un_ciel_azur_erbc1s.png",
+      "https://res.cloudinary.com/dxpsm36t3/image/upload/v1792110069/Entrep%C3%B4t_industriel_aux_palettes_color%C3%A9es_hbmvbf.png",
     ],
     distinctions: [],
     isFeatured: true,
@@ -1089,10 +1119,10 @@ export const PROJECTS: Project[] = [
       "Ce projet concerne la conception d'une installation industrielle de grande hauteur, sp\u00E9cialement destin\u00E9e aux activit\u00E9s de production de produits chimiques et de peintures. La nature de cette activit\u00E9 implique une infrastructure industrielle lourde, caract\u00E9ris\u00E9e par des exigences structurelles importantes et par la n\u00E9cessit\u00E9 de disposer de volumes adapt\u00E9s aux \u00E9quipements et aux installations de production.\n\nL'un des principaux enjeux techniques du projet r\u00E9side dans la conception d'une enveloppe structurelle m\u00E9tallique de grande port\u00E9e. Cette structure permet de couvrir les importants volumes n\u00E9cessaires au fonctionnement de l'installation industrielle tout en r\u00E9pondant aux contraintes li\u00E9es \u00E0 la grande hauteur du b\u00E2timent.\n\nCette ossature m\u00E9tallique est associ\u00E9e \u00E0 une infrastructure en b\u00E9ton arm\u00E9 \u00E0 haute r\u00E9sistance, sp\u00E9cifiquement dimensionn\u00E9e pour reprendre les sollicitations particuli\u00E8rement importantes g\u00E9n\u00E9r\u00E9es par les \u00E9quipements industriels. La conception structurelle doit notamment permettre de supporter les imposants silos de stockage int\u00E9gr\u00E9s \u00E0 l'installation ainsi que les charges dynamiques li\u00E9es \u00E0 son fonctionnement.\n\nLe projet repose ainsi sur la compl\u00E9mentarit\u00E9 entre une structure m\u00E9tallique de grande port\u00E9e et une infrastructure renforc\u00E9e en b\u00E9ton arm\u00E9, constituant une r\u00E9ponse structurelle adapt\u00E9e aux contraintes d'une installation industrielle lourde d\u00E9di\u00E9e \u00E0 la production chimique et \u00E0 la fabrication de peintures.",
     descriptionEn: null,
     coverImage:
-      "https://res.cloudinary.com/dxpsm36t3/image/upload/v1791256512/10_ulviif.png",
+      "https://res.cloudinary.com/dxpsm36t3/image/upload/v1792109141/Usine_industrielle_Deutschcolor_sous_ciel_bleu_nehlkw.png",
     images: [
-      "https://res.cloudinary.com/dxpsm36t3/image/upload/v1791256512/10_ulviif.png",
-      "https://res.cloudinary.com/dxpsm36t3/image/upload/v1791256512/11_iavupl.png",
+      "https://res.cloudinary.com/dxpsm36t3/image/upload/v1792109141/Usine_industrielle_Deutschcolor_sous_ciel_bleu_nehlkw.png",
+      "https://res.cloudinary.com/dxpsm36t3/image/upload/v1792109226/Complexe_industriel_Deutschcolor_moderne_q4by0v.png",
     ],
     distinctions: [],
     isFeatured: true,
