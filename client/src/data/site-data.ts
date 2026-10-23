@@ -1055,7 +1055,7 @@ export const PROJECTS: Project[] = [
     id: 31,
     title: "Polyclinique Hamda Laouani",
     titleEn: "Hamda Laouani Polyclinic",
-    category: "Residentiel bureautique",
+    category: "Divers",
     surface: "",
     year: null,
     status: "R\u00E9alis\u00E9e",
