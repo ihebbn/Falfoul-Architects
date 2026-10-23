@@ -1053,22 +1053,22 @@ export const PROJECTS: Project[] = [
   },
   {
     id: 31,
-    title: "Polyclinique Hammam Laouani",
-    titleEn: "Hammam Laouani Polyclinic",
+    title: "Polyclinique Hamda Laouani",
+    titleEn: "Hamda Laouani Polyclinic",
     category: "Residentiel bureautique",
     surface: "",
     year: null,
     status: "R\u00E9alis\u00E9e",
     location: "Tunisie",
-    client: "Polyclinique Hammam Laouani",
+    client: "Polyclinique Hamda Laouani",
     architects: "FALFOUL Architecture",
     description:
       "Ce centre m\u00E9dical pluridisciplinaire se distingue par la complexit\u00E9 de sa programmation fonctionnelle ainsi que par l'importance des interventions structurelles et des ouvrages de g\u00E9nie civil sp\u00E9cialis\u00E9s qui accompagnent sa r\u00E9alisation. L'ensemble du projet est d\u00E9velopp\u00E9 dans le respect de normes de qualit\u00E9 ISO strictes, constituant un cadre exigeant pour la conception et l'ex\u00E9cution des diff\u00E9rentes interventions.\n\nL'un des principaux d\u00E9fis techniques du projet concerne l'extension en sur\u00E9l\u00E9vation du service de maternit\u00E9. Celle-ci est r\u00E9alis\u00E9e au moyen d'une ossature m\u00E9tallique et vient s'int\u00E9grer \u00E0 une structure existante, au sein d'un \u00E9tablissement m\u00E9dical maintenu en activit\u00E9. Cette intervention constitue ainsi une op\u00E9ration structurelle particuli\u00E8rement d\u00E9licate, associant extension verticale et int\u00E9gration dans un environnement m\u00E9dical existant et fonctionnel.\n\nLe projet comprend \u00E9galement la r\u00E9alisation d'ouvrages complexes en b\u00E9ton arm\u00E9. Parmi ceux-ci figure un parking a\u00E9rien d\u00E9velopp\u00E9 sur plusieurs niveaux, constituant une infrastructure structurelle majeure du projet. \u00C0 cette intervention s'ajoute une unit\u00E9 de chimioth\u00E9rapie implant\u00E9e en sous-sol, dont les sp\u00E9cificit\u00E9s fonctionnelles n\u00E9cessitent la mise en \u0153uvre d'un dispositif de blindage lourd sp\u00E9cialis\u00E9.\n\n\u00C0 travers ces diff\u00E9rentes r\u00E9alisations, le projet r\u00E9unit ainsi plusieurs interventions techniques d'envergure : sur\u00E9l\u00E9vation en ossature m\u00E9tallique, structures complexes en b\u00E9ton arm\u00E9, parking a\u00E9rien \u00E0 plusieurs niveaux et unit\u00E9 de chimioth\u00E9rapie souterraine avec blindage sp\u00E9cialis\u00E9, le tout dans le cadre des exigences strictes li\u00E9es aux normes de qualit\u00E9 ISO.",
     descriptionEn: null,
     coverImage:
-      "https://res.cloudinary.com/dxpsm36t3/image/upload/v1792113189/Clinique_moderne_et_entr%C3%A9e_des_urgences_bl5m8t.png",
+      "https://res.cloudinary.com/dxpsm36t3/image/upload/v1792781568/33ac68bf-b47d-4940-8d20-15069cb46738_szqc52.jpg",
     images: [
-      "https://res.cloudinary.com/dxpsm36t3/image/upload/v1792113189/Clinique_moderne_et_entr%C3%A9e_des_urgences_bl5m8t.png",
+      "https://res.cloudinary.com/dxpsm36t3/image/upload/v1792781568/33ac68bf-b47d-4940-8d20-15069cb46738_szqc52.jpg",
       "https://res.cloudinary.com/dxpsm36t3/image/upload/v1792112686/R%C3%A9ception_moderne_d_une_clinique_lumineuse_sp2knf.png",
       "https://res.cloudinary.com/dxpsm36t3/image/upload/v1792112692/Couloir_moderne_lumineux_et_%C3%A9pur%C3%A9_imihlt.png",
       "https://res.cloudinary.com/dxpsm36t3/image/upload/v1792112727/Salle_d_urgence_moderne_avec_lits_m%C3%A9dicaux_at5wxw.png",
