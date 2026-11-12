@@ -247,6 +247,7 @@ export const STATUS_LABELS: Record<string, Record<Language, string>> = {
   Etudes: { fr: "Études", en: "Studies" },
   "Non classé": { fr: "Non classé", en: "Unranked" },
   "3ème prix": { fr: "3ème prix", en: "3rd prize" },
+  "6ème prix": { fr: "6ème prix", en: "6th prize" },
   "1er prix": { fr: "1er prix", en: "1st prize" },
   "Concours d'idées": { fr: "Concours d'idées", en: "Ideas competition" },
   "Concours national d'architecture (non classé)": {
