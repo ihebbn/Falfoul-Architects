@@ -95,7 +95,7 @@ export const translations = {
     "events.readMore": "En savoir plus",
 
     "footer.tagline":
-      "Agence d'architecture contemporaine axée sur des espaces épurés, durables et intemporels.",
+      "Cabinet d'architecture alliant expérience, innovation et conception d'espaces durables et intemporels.",
     "footer.contact": "Contact",
     "footer.address": "18 Rue Ibn Hanbel - El Mansoura -3131 Kairouan",
     "footer.phone": "(+216) 23311064",
@@ -199,7 +199,7 @@ export const translations = {
     "events.readMore": "Read more",
 
     "footer.tagline":
-      "A contemporary architecture studio focused on refined, lasting and timeless spaces.",
+      "An architecture practice combining experience, innovation and the design of lasting, timeless spaces.",
     "footer.contact": "Contact",
     "footer.address": "18 rue Ibn Hanbel - El Mansoura -3131 Kairouan, Tunisia",
     "footer.phone": "(+216) 23 311064",
