@@ -21,7 +21,8 @@ export default function Contact() {
   const tRef = useRef(t);
   tRef.current = t;
   const officeAddress = t("footer.address");
-  const mapQuery = encodeURIComponent(officeAddress);
+  // Google Business listing (exact pin), not a street-address search
+  const mapQuery = encodeURIComponent("Aymen Falfoul, M36R+RGW, Kairouan");
   const mapHref = `https://www.google.com/maps/search/?api=1&query=${mapQuery}`;
   const mapEmbedSrc = `https://www.google.com/maps?q=${mapQuery}&z=17&output=embed`;
 
