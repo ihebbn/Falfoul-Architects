@@ -99,7 +99,7 @@ export const translations = {
     "footer.contact": "Contact",
     "footer.address": "18 Rue Ibn Hanbel - El Mansoura -3131 Kairouan",
     "footer.phone": "(+216) 23311064",
-    "footer.email": "architecturefalfoul@gmail.com",
+    "footer.email": "contact@falfoularchitecture.com",
     "footer.rights": "Tous droits réservés.",
 
     "notFound.title": "404 Page introuvable",
@@ -203,7 +203,7 @@ export const translations = {
     "footer.contact": "Contact",
     "footer.address": "18 rue Ibn Hanbel - El Mansoura -3131 Kairouan, Tunisia",
     "footer.phone": "(+216) 23 311064",
-    "footer.email": "architecturefalfoul@gmail.com",
+    "footer.email": "contact@falfoularchitecture.com",
     "footer.rights": "All rights reserved.",
 
     "notFound.title": "404 Page not found",

@@ -6,7 +6,7 @@ import {
 } from "@/lib/contact-form";
 
 /** Inbox that receives contact form submissions. */
-export const CONTACT_INBOX_EMAIL = "architecturefalfoul@gmail.com";
+export const CONTACT_INBOX_EMAIL = "contact@falfoularchitecture.com";
 
 export function useContactMutation() {
   const [isPending, setIsPending] = useState(false);
